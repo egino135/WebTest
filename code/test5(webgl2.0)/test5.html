@@ -1,0 +1,43 @@
+<canvas id="canvas"></canvas>
+<link rel="stylesheet" href="../webgl.css" type="text/css">
+
+<!-- vertex shader -->
+<script id="2d-vertex-shader" type="x-shader/x-vertex">#version 300 es
+layout(location = 0) in vec3 a_position;
+
+uniform mat4 u_model;
+uniform mat4 u_view;
+uniform mat4 u_projection;
+
+void main() 
+{
+	gl_Position = u_projection * u_view * u_model * vec4(a_position, 1.0);
+}
+</script>
+<!-- fragment shader -->
+<script id="2d-fragment-shader" type="x-shader/x-fragment">#version 300 es
+precision mediump float;
+
+uniform vec4 u_color;
+
+out vec4 FragColor;
+
+void main() 
+{
+	FragColor = u_color;
+}
+</script>
+<!--
+for most samples webgl-utils only provides shader compiling/linking and
+canvas resizing because why clutter the examples with code that's the same in every sample.
+See http://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html
+and http://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
+for webgl-utils, m3, m4, and webgl-lessons-ui.
+-->
+
+<script src="../webgl-utils.js"></script>
+<script src="../glm-gl-matrix.min.js"></script>
+<script src="../glm-js.min.js"></script>
+
+
+<script src="test5.js"></script>

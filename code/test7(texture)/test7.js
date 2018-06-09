@@ -228,7 +228,7 @@ function main()
 
 	var img = new Image();
 	debug = img;
-	img.src = "kurumi.png"
+	img.src = "../img/kurumi.png"
 	img.crossOrigin = "anonymous";
 	img.addEventListener('load', function()
 	{

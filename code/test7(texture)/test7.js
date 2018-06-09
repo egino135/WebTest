@@ -228,11 +228,12 @@ function main()
 
 	var img = document.getElementById("testImg");
 	debug = img;
-	img.crossOrigin = "";
-	img.addEventListener('load', function() {
-	img.crossOrigin = "";
-	gl.bindTexture(gl.TEXTURE_2D, texture);
-	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+	img.crossOrigin = "anonymous";
+	img.addEventListener('load', function() 
+	{
+		img.crossOrigin = "anonymous";
+		gl.bindTexture(gl.TEXTURE_2D, texture);
+		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
 	});
 	
 	//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
@@ -295,7 +296,7 @@ function drawScene(gl, programInfo, vao, deltaTime)
 	model = glm.rotate(model, deltaTime, glm.vec3(0.0, 1.0, 0.0));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
-	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 0.0, 1.0, 1.0]);
+	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 1.0, 0.0, 1.0]);
 
 	gl.bindVertexArray(vao);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);

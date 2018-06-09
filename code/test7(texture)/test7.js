@@ -226,10 +226,11 @@ function main()
 	
 	gl.enableVertexAttribArray(programInfo.uniformLocations.u_texture);
 
-	var img = document.getElementById("kurumi.png");
+	var img = new Image();
 	debug = img;
+	img.src = "kurumi.png"
 	img.crossOrigin = "anonymous";
-	img.addEventListener('load', function() 
+	img.addEventListener('load', function()
 	{
 		img.crossOrigin = "anonymous";
 		gl.bindTexture(gl.TEXTURE_2D, texture);

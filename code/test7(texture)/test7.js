@@ -18,7 +18,12 @@ var camera =
 	moveSpeed:	5.0,
 	mouseSensitivity:	0.15,
 }
-
+var deltaTime = 0.0;
+//direction
+var FORWARD = 1;
+var BACKWARD = 2;
+var LEFT = 3;
+var RIGHT = 4;
 var vertexPos = new Float32Array([
 	  // positions          // normals           // texture coords
 		-0.5, -0.5, -0.5, 0.0, 0.0, -1.0, 0.0, 0.0,
@@ -228,7 +233,7 @@ function main()
 
 	var img = new Image();
 	debug = img;
-	img.src = "../img/kurumi.png"
+	img.src = "kurumi.png"
 	img.crossOrigin = "anonymous";
 	img.addEventListener('load', function()
 	{
@@ -258,7 +263,7 @@ function main()
 	}
 	requestAnimationFrame(render);
 }
-function drawScene(gl, programInfo, vao, deltaTime)
+function drawScene(gl, programInfo, vao, now)
 {
 	keyReaction(camera);
 	
@@ -294,7 +299,7 @@ function drawScene(gl, programInfo, vao, deltaTime)
 	
 	var model = glm.mat4();
 	model = glm.scale(model, glm.vec3(10.1, 10.1, 10.1));
-	model = glm.rotate(model, deltaTime, glm.vec3(0.0, 1.0, 0.0));
+	model = glm.rotate(model, now, glm.vec3(0.0, 1.0, 0.0));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 1.0, 0.0, 1.0]);
@@ -307,22 +312,44 @@ function drawScene(gl, programInfo, vao, deltaTime)
 	var count = 6 * 6;
 	gl.drawArrays(primitiveType, offset, count);
 }
-function moveCamera(camera, moveVector)
+function moveCamera(camera, direction)
 {
-	camera.position = glm.add(camera.position, moveVector);
+	var velocity = camera.moveSpeed * deltaTime;
+	
+	//velocity = glm.vec3(velocity, velocity, velocity);
+	debug = velocity;
+	const front = glm.mul(camera.front, velocity);
+	if (direction == FORWARD)
+		camera.position = glm.add(camera.position, glm.mul(camera.front, velocity));
+	if (direction == BACKWARD)
+		camera.position = glm.add(camera.position, glm.mul(camera.front, velocity * -1.0));
+	if (direction == LEFT)
+		camera.position = glm.add(camera.position, glm.mul(camera.right, velocity * -1.0));
+	if (direction == RIGHT)
+		camera.position = glm.add(camera.position, glm.mul(camera.right, velocity));
+	
+	
 }
 function keyReaction(camera)
 {
 	if(keys[87])	//type w
 	{
-		moveCamera(camera, glm.vec3(0.0, 0.0, -0.1));
-		//console.log(camera.position);
+		moveCamera(camera, FORWARD);
 	}
-	else if(keys[83])	//type s
+	if(keys[83])	//type s
 	{
-		moveCamera(camera, glm.vec3(0.0, 0.0, 0.1));
-		//console.log(camera.position);
+		moveCamera(camera, BACKWARD);
 	}
+	if(keys[65])	//type a
+	{
+		moveCamera(camera, LEFT);
+	}
+	if(keys[68])	//type d
+	{
+		moveCamera(camera, RIGHT);
+	}
+	
+	
 }
 
 function getMousePos(canvas, evt) 

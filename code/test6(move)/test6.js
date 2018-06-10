@@ -247,7 +247,7 @@ function moveCamera(camera, direction)
 	var velocity = camera.moveSpeed * deltaTime;
 	
 	//velocity = glm.vec3(velocity, velocity, velocity);
-	debug = velocity;
+	
 	const front = glm.mul(camera.front, velocity);
 	if (direction == FORWARD)
 		camera.position = glm.add(camera.position, glm.mul(camera.front, velocity));

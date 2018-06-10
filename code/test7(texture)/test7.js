@@ -232,7 +232,6 @@ function main()
 	gl.enableVertexAttribArray(programInfo.uniformLocations.u_texture);
 
 	var img = new Image();
-	debug = img;
 	img.src = "../img/kurumi.png"
 	img.crossOrigin = "anonymous";
 	img.addEventListener('load', function()
@@ -254,7 +253,7 @@ function main()
 	function render(now)
 	{
 		now *= 0.01;  // convert to seconds
-		const deltaTime = now - then;
+		deltaTime = now - then;
 		then = now;
 
 		drawScene(gl, programInfo, vao, now);
@@ -315,9 +314,7 @@ function drawScene(gl, programInfo, vao, now)
 function moveCamera(camera, direction)
 {
 	var velocity = camera.moveSpeed * deltaTime;
-	
-	//velocity = glm.vec3(velocity, velocity, velocity);
-	debug = velocity;
+
 	const front = glm.mul(camera.front, velocity);
 	if (direction == FORWARD)
 		camera.position = glm.add(camera.position, glm.mul(camera.front, velocity));
@@ -327,6 +324,7 @@ function moveCamera(camera, direction)
 		camera.position = glm.add(camera.position, glm.mul(camera.right, velocity * -1.0));
 	if (direction == RIGHT)
 		camera.position = glm.add(camera.position, glm.mul(camera.right, velocity));
+	
 	
 	
 }

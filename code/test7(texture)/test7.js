@@ -439,6 +439,7 @@ function processMouseScroll(yoffset)
 function mouseWheel(event)
 {
 	processMouseScroll(event.deltaFactor * event.deltaY);
+	return false;	//avoid page move
 }
 $(document).ready(main());
 

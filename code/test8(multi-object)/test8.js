@@ -76,11 +76,11 @@ var SquareVertex = new Float32Array([
 		-0.5, 0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 1.0,
 		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0]);
 var imgInfo = [
-	{path: "../img/kurumi.png", 		width: 600, height:800, texture: null},
-	{path: "../img/Raven_ Branwen.png", width: 600, height:800, texture: null},
-	{path: "../img/chiya.png", 			width: 600, height:800, texture: null},
-	{path: "../img/zero_two.png", 		width: 600, height:800, texture: null},
-	{path: "../img/Sorceress.png", 		width: 600, height:800, texture: null}];
+	{path: "../img/graffiti/kurumi.png", 		width: 600, height:800, texture: null},
+	{path: "../img/graffiti/Raven_ Branwen.png", 	width: 600, height:800, texture: null},
+	{path: "../img/graffiti/chiya.png", 		width: 600, height:800, texture: null},
+	{path: "../img/graffiti/zero_two.png", 		width: 600, height:800, texture: null},
+	{path: "../img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null}];
 var imgPos = [
 	{translate: glm.vec3(50.0, 0.0, 0.0),	rotate: -90.0},
 	{translate: glm.vec3(50.0, 0.0, -50.0), rotate: -90.0},
@@ -344,7 +344,7 @@ function main()
 		info.texture = loadImg2Texture(gl, info.path);
 	}
 	
-	floorTexture = loadImg2Texture(gl, "../img/floor.jpg");
+	floorTexture = loadImg2Texture(gl, "../img/scene/floor.jpg");
 	
 		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	

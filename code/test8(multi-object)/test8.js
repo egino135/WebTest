@@ -94,6 +94,10 @@ function createShader(gl, source, type)
 	gl.compileShader(shader);
 	return shader;
 }
+var floorTexture = null;
+
+
+
 function createProgram(gl, vertexShaderSource, fragmentShaderSource) 
 {
 	var program = gl.createProgram();
@@ -240,7 +244,7 @@ function createSquareVAO(gl)
 	
 	return {vaoNumber: vao, offset: 0, count: 6};
 }
-function loadImg2Texture(gl, info)
+function loadImg2Texture(gl, path)
 {
 	var texture = gl.createTexture();
 	gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -256,7 +260,7 @@ function loadImg2Texture(gl, info)
 	
 
 	var img = new Image();
-	img.src = info.path;
+	img.src = path;
 	img.crossOrigin = "anonymous";
 	img.addEventListener('load', function()
 	{
@@ -282,6 +286,21 @@ function renderImage(gl, programInfo, squareVaoInfo, imgPos, imgInfo)
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
 	
 	gl.drawArrays(gl.TRIANGLES, squareVaoInfo.offset, squareVaoInfo.count);
+}
+function renderFloor(gl, programInfo, cubeVaoInfo, floorTexture)
+{
+	var model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, -30.0, 0.0));
+	model = glm.scale(model, glm.vec3(500.0, 5.0, 500.0));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
 }
 function main()
 {
@@ -322,8 +341,11 @@ function main()
 
 	for(var info of imgInfo)
 	{
-		info.texture = loadImg2Texture(gl, info);
+		info.texture = loadImg2Texture(gl, info.path);
 	}
+	
+	floorTexture = loadImg2Texture(gl, "../img/floor.jpg");
+	
 		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	
 	
@@ -392,6 +414,7 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	
 	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
 	
+	renderFloor(gl, programInfo, cubeVaoInfo, floorTexture);
 	
 	for(var i = 0;i < imgPos.length;i++)
 	{

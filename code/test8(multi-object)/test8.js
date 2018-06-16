@@ -75,12 +75,18 @@ var SquareVertex = new Float32Array([
 		0.5, 0.5, 0.0, 		0.0, 0.0, 		-1.0, 1.0, 1.0,
 		-0.5, 0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 1.0,
 		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0]);
-var imginfo = [
+var imgInfo = [
 	{path: "../img/kurumi.png", 		width: 600, height:800, texture: null},
 	{path: "../img/Raven_ Branwen.png", width: 600, height:800, texture: null},
 	{path: "../img/chiya.png", 			width: 600, height:800, texture: null},
 	{path: "../img/zero_two.png", 		width: 600, height:800, texture: null},
 	{path: "../img/Sorceress.png", 		width: 600, height:800, texture: null}];
+var imgPos = [
+	{translate: glm.vec3(50.0, 0.0, 0.0),	rotate: -90.0},
+	{translate: glm.vec3(50.0, 0.0, -50.0), rotate: -90.0},
+	{translate: glm.vec3(50.0, 0.0, -100.0),rotate: -90.0},
+	{translate: glm.vec3(50.0, 0.0, -150.0),rotate: -90.0},
+	{translate: glm.vec3(50.0, 0.0, -200.0),rotate: -90.0}];
 function createShader(gl, source, type) 
 {
 	var shader = gl.createShader(type);
@@ -261,6 +267,22 @@ function loadImg2Texture(gl, info)
 	
 	return texture;
 }
+function renderImage(gl, programInfo, squareVaoInfo, imgPos, imgInfo)
+{
+	var model = glm.mat4();
+	model = glm.translate(model, imgPos.translate);
+	model = glm.rotate(model, glm.radians(imgPos.rotate), glm.vec3(0.0, 1.0, 0.0));
+	model = glm.scale(model, glm.vec3(imgInfo.width / 20.0, imgInfo.height / 20.0, 1.0));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+	
+	gl.bindTexture(gl.TEXTURE_2D, imgInfo.texture);
+	
+	gl.bindVertexArray(squareVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, squareVaoInfo.offset, squareVaoInfo.count);
+}
 function main()
 {
 	
@@ -290,7 +312,6 @@ function main()
 			projection:		gl.getUniformLocation(shaderProgram, "u_projection"),
 			view:			gl.getUniformLocation(shaderProgram, "u_view"),
 			model:			gl.getUniformLocation(shaderProgram, "u_model"),
-			color:			gl.getUniformLocation(shaderProgram, "u_color"),
 			texture:		gl.getUniformLocation(shaderProgram, "u_texture"),
 		},
 	};
@@ -299,7 +320,7 @@ function main()
 	var cubeVaoInfo = createCubeVAO(gl);
 	var squareVaoInfo = createSquareVAO(gl);
 
-	for(var info of imginfo)
+	for(var info of imgInfo)
 	{
 		info.texture = loadImg2Texture(gl, info);
 	}
@@ -363,9 +384,8 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	model = glm.rotate(model, now, glm.vec3(0.0, 1.0, 0.0));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
-	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 1.0, 0.0, 1.0]);
 
-	gl.bindTexture(gl.TEXTURE_2D, imginfo[0].texture);
+	gl.bindTexture(gl.TEXTURE_2D, imgInfo[0].texture);
 	
 	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
@@ -373,20 +393,11 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
 	
 	
+	for(var i = 0;i < imgPos.length;i++)
+	{
+		renderImage(gl, programInfo, squareVaoInfo, imgPos[i], imgInfo[i]);
+	}
 	
-	model = glm.mat4();
-	model = glm.translate(model, glm.vec3(20.0, 0.0, 0.0));
-	model = glm.scale(model, glm.vec3(10.0, 10.0, 10.0));
-	
-	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
-	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 1.0, 0.0, 1.0]);
-	
-	gl.bindTexture(gl.TEXTURE_2D, imginfo[1].texture);
-	
-	gl.bindVertexArray(squareVaoInfo.vaoNumber);
-	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
-	
-	gl.drawArrays(gl.TRIANGLES, squareVaoInfo.offset, squareVaoInfo.count);
 	
 }
 function moveCamera(camera, direction)

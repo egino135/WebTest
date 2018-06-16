@@ -66,7 +66,21 @@ var vertexPos = new Float32Array([
 		0.5, 0.5, 0.5, 0.0, 1.0, 0.0, 1.0, 0.0,
 		0.5, 0.5, 0.5, 0.0, 1.0, 0.0, 1.0, 0.0,
 		-0.5, 0.5, 0.5, 0.0, 1.0, 0.0, 0.0, 0.0,
-		-0.5, 0.5, -0.5, 0.0, 1.0, 0.0, 0.0, 1.0])
+		-0.5, 0.5, -0.5, 0.0, 1.0, 0.0, 0.0, 1.0]);
+var SquareVertex = new Float32Array([
+		// positions        // normals		// texture coords
+		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0,
+		0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 1.0, 0.0,
+		0.5, 0.5, 0.0, 		0.0, 0.0, 		-1.0, 1.0, 1.0,
+		0.5, 0.5, 0.0, 		0.0, 0.0, 		-1.0, 1.0, 1.0,
+		-0.5, 0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 1.0,
+		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0]);
+var imginfo = [
+	{path: "../img/kurumi.png", 		width: 600, height:800, texture: null},
+	{path: "../img/Raven_ Branwen.png", width: 600, height:800, texture: null},
+	{path: "../img/chiya.png", 			width: 600, height:800, texture: null},
+	{path: "../img/zero_two.png", 		width: 600, height:800, texture: null},
+	{path: "../img/Sorceress.png", 		width: 600, height:800, texture: null}];
 function createShader(gl, source, type) 
 {
 	var shader = gl.createShader(type);
@@ -143,9 +157,8 @@ function loadImageAndCreateTextureInfo(gl, url)
 
 	return textureInfo;
 }
-function main()
+function initialKeys()
 {
-
 	//initial keys
 	//keyboard have 256 type
 	for(var i = 0;i<256;i++)
@@ -157,7 +170,6 @@ function main()
 		var key = event.which || event.keyCode;
 		keys[key] = true;
 		//console.log("key number: " + key + " now is " + keys[key]);	
-		
 	});
 	$(document).keyup(function(e)
 	{
@@ -165,7 +177,96 @@ function main()
 		keys[key] = false;
 		//console.log("key number: " + key + " now is " + keys[key]);		
 	});
+}
+function createCubeVAO(gl)
+{
+	// Create a buffer.
+	var vbo = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+	gl.bufferData(gl.ARRAY_BUFFER, vertexPos, gl.STATIC_DRAW);	
+
+	// Create a vertex array object (attribute state)
+	var vao = gl.createVertexArray();
+	// and make it the one we're currently working with
+	gl.bindVertexArray(vao);
+	//vbo already create
+	gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+	
+	gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 8 * floatSize, 0);
+	gl.enableVertexAttribArray(0);
+	
+	gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 8 * floatSize, 3 * floatSize );
+	gl.enableVertexAttribArray(1);
+	
+	gl.vertexAttribPointer(2, 2, gl.FLOAT, false, 8 * floatSize , 6 * floatSize );
+	gl.enableVertexAttribArray(2);
+	
+	//unbind
+	gl.bindVertexArray(null);
+	
+	return {vaoNumber: vao, offset: 0, count: 36};
+}
+function createSquareVAO(gl)
+{
+	// Create a buffer.
+	var vbo = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+	gl.bufferData(gl.ARRAY_BUFFER, vertexPos, gl.STATIC_DRAW);	
+
+	// Create a vertex array object (attribute state)
+	var vao = gl.createVertexArray();
+	// and make it the one we're currently working with
+	gl.bindVertexArray(vao);
+	//vbo already create
+	gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+	
+	gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 8 * floatSize, 0);
+	gl.enableVertexAttribArray(0);
+	
+	gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 8 * floatSize, 3 * floatSize );
+	gl.enableVertexAttribArray(1);
+	
+	gl.vertexAttribPointer(2, 2, gl.FLOAT, false, 8 * floatSize , 6 * floatSize );
+	gl.enableVertexAttribArray(2);
+	
+	//unbind
+	gl.bindVertexArray(null);
+	
+	return {vaoNumber: vao, offset: 0, count: 6};
+}
+function loadImg2Texture(gl, info)
+{
+	var texture = gl.createTexture();
+	gl.bindTexture(gl.TEXTURE_2D, texture);
+	// Fill the texture with a 1x1 blue pixel.
+	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
+				  new Uint8Array([0, 0, 255, 255]));
+
+	// let's assume all images are not a power of 2
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+	
+	
+
+	var img = new Image();
+	img.src = info.path;
+	img.crossOrigin = "anonymous";
+	img.addEventListener('load', function()
+	{
+		img.crossOrigin = "anonymous";
+		gl.bindTexture(gl.TEXTURE_2D, texture);
+		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+	});
+	
+	return texture;
+}
+function main()
+{
+	
+	initialKeys();
 	$("#canvas").mousewheel(mouseWheel);
+	
 	// Get A WebGL context
 	/** @type {HTMLCanvasElement} */
 	var	canvas = document.getElementById("canvas");
@@ -193,56 +294,16 @@ function main()
 			texture:		gl.getUniformLocation(shaderProgram, "u_texture"),
 		},
 	};
-	
-	// Create a buffer.
-	var vbo = gl.createBuffer();
-	gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-	gl.bufferData(gl.ARRAY_BUFFER, vertexPos, gl.STATIC_DRAW);	
-
-	// Create a vertex array object (attribute state)
-	var vao = gl.createVertexArray();
-	// and make it the one we're currently working with
-	gl.bindVertexArray(vao);
-	//vbo already create
-	gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-	
-	gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 8 * floatSize, 0);
-	gl.enableVertexAttribArray(0);
-	
-	gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 8 * floatSize, 3 * floatSize );
-	gl.enableVertexAttribArray(1);
-	
-	gl.vertexAttribPointer(2, 2, gl.FLOAT, false, 8 * floatSize , 6 * floatSize );
-	gl.enableVertexAttribArray(2);
-	
-	//unbind
-	gl.bindVertexArray(null);
-	
-	
-	var texture = gl.createTexture();
-	gl.bindTexture(gl.TEXTURE_2D, texture);
-	// Fill the texture with a 1x1 blue pixel.
-	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
-				  new Uint8Array([0, 0, 255, 255]));
-
-	// let's assume all images are not a power of 2
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-	
 	gl.enableVertexAttribArray(programInfo.uniformLocations.u_texture);
-
-	var img = new Image();
-	img.src = "../img/kurumi.png"
-	img.crossOrigin = "anonymous";
-	img.addEventListener('load', function()
-	{
-		img.crossOrigin = "anonymous";
-		gl.bindTexture(gl.TEXTURE_2D, texture);
-		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
-	});
 	
-	//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
+	var cubeVaoInfo = createCubeVAO(gl);
+	var squareVaoInfo = createSquareVAO(gl);
+
+	for(var info of imginfo)
+	{
+		info.texture = loadImg2Texture(gl, info);
+	}
+		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	
 	
 	var then = 0.0;
@@ -257,13 +318,13 @@ function main()
 		deltaTime = now - then;
 		then = now;
 
-		drawScene(gl, programInfo, vao, now);
+		drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now);
 
 		requestAnimationFrame(render);
 	}
 	requestAnimationFrame(render);
 }
-function drawScene(gl, programInfo, vao, now)
+function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 {
 	keyReaction(camera);
 	
@@ -298,19 +359,35 @@ function drawScene(gl, programInfo, vao, now)
 
 	
 	var model = glm.mat4();
-	model = glm.scale(model, glm.vec3(10.1, 10.1, 10.1));
+	model = glm.scale(model, glm.vec3(10.0, 10.0, 10.0));
 	model = glm.rotate(model, now, glm.vec3(0.0, 1.0, 0.0));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 1.0, 0.0, 1.0]);
 
-	gl.bindVertexArray(vao);
+	gl.bindTexture(gl.TEXTURE_2D, imginfo[0].texture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
 	
-	var primitiveType = gl.TRIANGLES;
-	var offset = 0;
-	var count = 6 * 6;
-	gl.drawArrays(primitiveType, offset, count);
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(20.0, 0.0, 0.0));
+	model = glm.scale(model, glm.vec3(10.0, 10.0, 10.0));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+	gl.uniform4fv(programInfo.uniformLocations.color, [0.0, 1.0, 0.0, 1.0]);
+	
+	gl.bindTexture(gl.TEXTURE_2D, imginfo[1].texture);
+	
+	gl.bindVertexArray(squareVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, squareVaoInfo.offset, squareVaoInfo.count);
+	
 }
 function moveCamera(camera, direction)
 {

@@ -96,26 +96,16 @@ var wallPos = [
 	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, -floorPos.length),	width: 10.0,	height: 300.0, length: floorPos.length},
 	{translate: glm.vec3(floorPos.width /2.0, 0.0, -floorPos.length),	width: 10.0,	height: 300.0, length: floorPos.length},	];
 var columnPos = [
-	{translate: glm.vec3(125.0, 0.0, 200.0),	width: 25.0, height: 300.0, length: 25.0}, 
-	{translate: glm.vec3(125.0, 0.0, 100.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, 0.0),		width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -100.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -200.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -300.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -400.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -500.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -600.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(125.0, 0.0, -700.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, 200.0),	width: 25.0, height: 300.0, length: 25.0}, 
-	{translate: glm.vec3(-125.0, 0.0, 100.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, 0.0),		width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -100.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -200.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -300.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -400.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -500.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -600.0),	width: 25.0, height: 300.0, length: 25.0},
-	{translate: glm.vec3(-125.0, 0.0, -700.0),	width: 25.0, height: 300.0, length: 25.0},];
+	{translate: glm.vec3(125.0, 0.0, 200.0),	width: 30.0, height: 300.0, length: 30.0}, 
+	{translate: glm.vec3(125.0, 0.0, 0.0),		width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(125.0, 0.0, -200.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(125.0, 0.0, -400.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(125.0, 0.0, -600.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, 200.0),	width: 30.0, height: 300.0, length: 30.0}, 
+	{translate: glm.vec3(-125.0, 0.0, 0.0),		width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, -200.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, -400.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, -600.0),	width: 30.0, height: 300.0, length: 30.0},];
 function createShader(gl, source, type) 
 {
 	var shader = gl.createShader(type);
@@ -346,6 +336,35 @@ function renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture)
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
 	
 	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, 150.0, 0.0));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, 150.0, -floorPos.length));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
 }
 function renderWalls(gl, programInfo, cubeVaoInfo, wallPos, wallTexture)
 {
@@ -421,7 +440,7 @@ function main()
 	
 	floorTexture = loadImg2Texture(gl, "../img/scene/floor.jpg");
 	wallTexture = loadImg2Texture(gl, "../img/scene/wall.jpg")
-	columnTexture = loadImg2Texture(gl, "../img/scene/column.png")
+	columnTexture = loadImg2Texture(gl, "../img/scene/column.jpg")
 		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	
 	

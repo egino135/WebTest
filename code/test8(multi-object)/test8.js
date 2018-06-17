@@ -499,7 +499,7 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	}
 	for(var w of wallPos)
 	{
-		//renderWalls(gl, programInfo, cubeVaoInfo, w, wallTexture)	
+		renderWalls(gl, programInfo, cubeVaoInfo, w, wallTexture)	
 	}
 	for(var c of columnPos)
 	{

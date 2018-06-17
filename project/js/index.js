@@ -28,6 +28,7 @@ $(document).ready(function() {
   let v_gallery = document.getElementById('v-gallery');
   let contact = document.getElementById('contact');
   let price = document.getElementById('price');
+  let cooperate = document.getElementById('cooperate');
 
   /*$("#pic-1").owlCarousel({
     autoPlay: 3000, //Set AutoPlay to 3 seconds
@@ -105,6 +106,9 @@ $(document).ready(function() {
     }
     else if(isElementInViewport(hai)){
       target = 'hai';
+    }
+    else if(isElementInViewport(cooperate)){
+      target = 'coo';
     }
     else if(isElementInViewport(v_gallery)){
       target = 'v-gallery';

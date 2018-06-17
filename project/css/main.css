@@ -177,6 +177,7 @@ h1 {
   transform: translate3d(-75%, 0, 0);
   opacity: 0;
   transition: transform 700ms ease-out, opacity 700ms ease-out;
+  text-align: right;
 }
 .price-content-animate-right {
   transform: translate3d(75%, 0, 0);
@@ -186,6 +187,10 @@ h1 {
 .price-content-animate-active {
   transform: translate3d(0, 0, 0);
   opacity: 1;
+}
+
+.price-content-div img {
+  width: 80%;
 }
 
 @media only screen and (max-width: 990px) {

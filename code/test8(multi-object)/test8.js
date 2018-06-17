@@ -90,19 +90,19 @@ var imgInfo = [
 	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
 	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},];
 var imgPos = [
-	{translate: glm.vec3(245.0, 0.0, 200.0),	rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, 150.0),	rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, 100.0),	rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, 50.0),	rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, 0.0),	rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -50.0), rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -100.0),rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -150.0),rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -200.0),rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -250.0),rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -300.0),rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -350.0),rotate: -90.0},
-	{translate: glm.vec3(245.0, 0.0, -400.0),rotate: -90.0},];
+	{translate: glm.vec3(230.0, 0.0, 200.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, 150.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, 100.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, 50.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, 0.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -50.0), rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -100.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -150.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -200.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -250.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -300.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -350.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -400.0),rotate: -90.0},];
 var floorPos = {width: 500, height: 5, length: 500}
 var wallPos = [
 	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 

@@ -89,10 +89,12 @@ var imgPos = [
 	{translate: glm.vec3(100.0, 0.0, -200.0),rotate: -90.0}];
 var floorPos = {width: 500, height: 5, length: 500}
 var wallPos = [
-	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, 0.0),	width: 10.0,			height: 300.0, length: floorPos.length}, 
-	{translate: glm.vec3(floorPos.width / 2.0, 0.0, 0.0),	width: 10.0,			height: 300.0, length: floorPos.length}, 
-	{translate: glm.vec3(0.0, 0.0, -floorPos.length / 2.0),	width: floorPos.width,	height: 300.0, length: 10.0}, 
-	{translate: glm.vec3(0.0, 0.0, floorPos.length / 2.0),	width: floorPos.width,	height: 300.0, length: 10.0}, ];
+	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
+	{translate: glm.vec3(floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
+	{translate: glm.vec3(0.0, 0.0, -floorPos.length * 3.0 / 2.0),	width: floorPos.width,	height: 300.0, length: 10.0}, 
+	{translate: glm.vec3(0.0, 0.0, floorPos.length / 2.0),			width: floorPos.width,	height: 300.0, length: 10.0},
+	{translate: glm.vec3(-floorPos.width, 0.0, -floorPos.length),	width: floorPos.width,	height: 300.0, length: floorPos.length},
+	{translate: glm.vec3(floorPos.width, 0.0, -floorPos.length),	width: floorPos.width,	height: 300.0, length: floorPos.length},	];
 function createShader(gl, source, type) 
 {
 	var shader = gl.createShader(type);
@@ -297,6 +299,21 @@ function renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture)
 {
 	var model = glm.mat4();
 	model = glm.translate(model, glm.vec3(0.0, -50.0, 0.0));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, -50.0, -floorPos.length));
 	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);

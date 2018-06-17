@@ -169,12 +169,9 @@ h1 {
   flex-wrap: wrap;
 }
 .price-content-div {
-  width: 50%;
-  height: 30vh;
   margin: 0;
   padding: 10px;
-  background-color: green;
-  margin-bottom: 10px;
+  width: 50%;
 }
 .price-content-animate-left {
   transform: translate3d(-75%, 0, 0);
@@ -213,6 +210,12 @@ h1 {
   .price-content-animate-left, .price-content-animate-right {
     transform: translate3d(0, 0, 0);
     opacity: 1;
+  }
+  .price-content-div img {
+    width: 100%;
+  }
+  #gallary {
+    display: none;
   }
 }
 

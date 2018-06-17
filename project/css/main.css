@@ -53,6 +53,9 @@ nav > div > div {
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.8);
 }
+.navbar-light .navbar-nav .nav-link:first-child {
+  font-weight: bolder;
+}
 .home {
   height: 100vh;
   width: 100%;
@@ -78,13 +81,24 @@ nav > div > div {
   margin-top: 5vh;
   margin-bottom: 10vh;
 }
-.pic-gallery .item{
+.pic-gallery .item {
   margin: 3px;
+  border: 1px solid lightgray;
+  height:282px;
+  overflow: hidden;
 }
-.pic-gallery .item img{
+
+.pic-gallery .item img {
   display: block;
   width: 100%;
   height: auto;
+  visibility: hidden;
+}
+#pic-1 .item {
+  margin: 3px;
+  border: 1px solid lightgray;
+  height:282px;
+  overflow: hidden;
 }
 .target {
   cursor: pointer;
@@ -200,4 +214,220 @@ h1 {
     transform: translate3d(0, 0, 0);
     opacity: 1;
   }
+}
+
+/*
+*
+*/
+#pic-1 .item.img1 {
+  background: url(../img/practice/body_study1.png) no-repeat center center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img2 {
+  background: url(../img/practice/body_study2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img3 {
+  background: url(../img/practice/Krenz_W1.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img4 {
+  background: url(../img/practice/Krenz_W2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img5 {
+  background: url(../img/practice/Krenz_W3.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img6 {
+  background: url(../img/practice/Krenz_W4.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img7 {
+  background: url(../img/practice/Krenz_W5.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img8 {
+  background: url(../img/practice/Krenz_W6.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+/*
+*
+*/
+#pic-2 .item.img1 {
+  background: url(../img/graffiti/chiya.png) no-repeat center center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img2 {
+  background: url(../img/graffiti/kurumi.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img3 {
+  background: url(../img/graffiti/kurumi_R18.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img4 {
+  background: url(../img/graffiti/Raven_Branwen.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img5 {
+  background: url(../img/graffiti/Sorceress.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img6 {
+  background: url(../img/graffiti/zero_two.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img7 {
+  background: url(../img/graffiti/zero_two_R18.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img8 {
+  background: url(../img/graffiti/情人節快樂.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img9 {
+  background: url(../img/graffiti/薛南賀圖.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+/*
+*
+*/
+#pic-1 .item.img8 {
+  background: url(../img/practice/Krenz_W6.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+/*
+*
+*/
+#pic-3 .item.img1 {
+  background: url(../img/creation/2016萬聖節.png) no-repeat center center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img2 {
+  background: url(../img/creation/2017丁酉.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img3 {
+  background: url(../img/creation//2017萬聖節-狂三.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img4 {
+  background: url(../img/creation/2B.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img5 {
+  background: url(../img/creation/miku-10th.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img6 {
+  background: url(../img/creation/Ruby.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img7 {
+  background: url(../img/creation/世大運-230.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img8 {
+  background: url(../img/creation/乘龍.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img9 {
+  background: url(../img/creation/狂三-聖誕.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img10 {
+  background: url(../img/creation/狂三.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img11 {
+  background: url("../img/creation/狂三毛衣(R15).png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
 }

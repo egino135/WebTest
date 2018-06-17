@@ -9,128 +9,50 @@
     <link rel="stylesheet" href="owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/webgl.css">
     <script src="js/bootstrap.min.js"></script>
     <script src="owl-carousel/owl.carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
     <script src="lightGallery/js/lightgallery-all.min.js"></script>
     <script src="js/skrollr.js"></script>
     <script src="js/skrollr.menu.min.js"></script>
-    <script>
-      //$("#intro_link")[0].click();
-      function isElementInViewport(el) {
-        var rect     = el.getBoundingClientRect(),
-            vWidth   = window.innerWidth || doc.documentElement.clientWidth,
-            vHeight  = window.innerHeight || doc.documentElement.clientHeight,
-            efp      = function (x, y) { return document.elementFromPoint(x, y) };     
-
-        // Return false if it's not in the viewport
-        if (rect.right < 0 || rect.bottom < 0 
-                || rect.left > vWidth || rect.top > vHeight)
-            return false;
-
-        // Return true if any of its four corners are visible
-        return (
-              el.contains(efp(rect.left,  rect.top))
-          ||  el.contains(efp(rect.right, rect.top))
-          ||  el.contains(efp(rect.right, rect.bottom))
-          ||  el.contains(efp(rect.left,  rect.bottom))
-        );
+    <script src="js/webgl-utils.js"></script>
+    <script src="js/glm-gl-matrix.min.js"></script>
+    <script src="js/glm-js.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/test8.js"></script>
+    <!-- vertex shader -->
+    <script id="3d-vertex-shader" type="x-shader/x-vertex">#version 300 es
+      layout(location = 0) in vec3 in_position;
+      layout(location = 1) in vec3 in_normal;
+      layout(location = 2) in vec2 in_textureCoor;
+      
+      out vec2 textureCoor;
+      
+      uniform mat4 u_model;
+      uniform mat4 u_view;
+      uniform mat4 u_projection;
+      
+      void main() 
+      {
+        gl_Position = u_projection * u_view * u_model * vec4(in_position, 1.0);
+        textureCoor = vec2(in_textureCoor.x, 1.0 - in_textureCoor.y);
       }
-      $(document).ready(function() {
-        
-        let home = document.getElementById('home');
-        let intro = document.getElementById('intro');
-        let practice = document.getElementById('practice');
-        let tuya = document.getElementById('tuya');
-        let hai = document.getElementById('hai');
-        let v_gallery = document.getElementById('v-gallery');
-        let contact = document.getElementById('contact');
-        let price = document.getElementById('price');
-
-        $("#pic-1").owlCarousel({
-          autoPlay: 3000, //Set AutoPlay to 3 seconds
-          items : 4,
-          itemsDesktop : [1199,3],
-          itemsDesktopSmall : [768,1]
-        }).lightGallery({
-          selector: '.target'
-        });
-
-        $("#pic-2").owlCarousel({
-          autoPlay: 2499, //Set AutoPlay to 3 seconds
-          items : 4,
-          itemsDesktop : [1199,3],
-          itemsDesktopSmall : [768,1]
-        }).lightGallery({
-          selector: '.target'
-        });
-
-        $("#pic-3").owlCarousel({
-          autoPlay: 2699, //Set AutoPlay to 3 seconds
-          items : 4,
-          itemsDesktop : [1199,3],
-          itemsDesktopSmall : [768,1]
-        }).lightGallery({
-          selector: '.target'
-        });
-
-        $('.lg-close').click(function(){
-          $('.gallery-animate').trigger('owl.play', 3000);
-        });
-        
-        var s = skrollr.init({
-          smoothScrolling : true
-        });
-        skrollr.menu.init(s, {
-          animate: true,
-          updateUrl: false
-        })
-
-        window.addEventListener('scroll', function(){
-          let target;
-          if(isElementInViewport(home)){
-            target = 'home';
-          }
-          else if(isElementInViewport(intro)){
-            target = 'intro';
-          }
-          else if(isElementInViewport(practice)){
-            target = 'practice'
-          }
-          else if(isElementInViewport(tuya)){
-            target = 'tuya';
-          }
-          else if(isElementInViewport(hai)){
-            target = 'hai';
-          }
-          else if(isElementInViewport(v_gallery)){
-            target = 'v-gallery';
-          }
-          else if(isElementInViewport(price)){
-            target = 'price';
-          }
-          else if(isElementInViewport(contact)){
-            target = 'contact';
-          }
-          if(typeof target !== 'undefined'){
-            target += '_link';
-            $('.navbar-nav a').removeClass('nav-active');
-            $('#' + target).addClass('nav-active');
-          }
-
-          let animate = document.querySelectorAll('.price-content-div');
-          if(isElementInViewport(animate[0]) || isElementInViewport(animate[1]) || isElementInViewport(animate[2]) || isElementInViewport(animate[3])){
-            setTimeout("$('.price-content div').addClass('price-content-animate-active')", 300);
-          }
-          else{
-            $('.price-content div').removeClass('price-content-animate-active');
-          }
-        });
-
-        window.onbeforeunload = function () {
-          window.scrollTo(0, 0);
-        };
-      });
+    </script>
+    <!-- fragment shader -->
+    <script id="3d-fragment-shader" type="x-shader/x-fragment">#version 300 es
+      precision mediump float;
+      
+      in vec2 textureCoor;
+      
+      uniform sampler2D u_texture;
+      
+      out vec4 FragColor;
+      
+      void main() 
+      {
+        FragColor = texture(u_texture, textureCoor);
+      }
     </script>
   </head>
   <body>
@@ -144,8 +66,8 @@
             <a id="home_link" class="nav-item nav-link nav-active" href="#home">Maochinn <span class="sr-only">(current)</span></a>
             <a id="intro_link" class="nav-item nav-link" href="#intro">Intro</a>
             <a id="practice_link" class="nav-item nav-link" href="#practice">Practice</a>
-            <a id="tuya_link" class="nav-item nav-link" href="#tuya">Tuya</a>
-            <a id="hai_link" class="nav-item nav-link" href="#hai">Haiyousha</a>
+            <a id="tuya_link" class="nav-item nav-link" href="#tuya">Graffiti</a>
+            <a id="hai_link" class="nav-item nav-link" href="#hai">Creation</a>
             <a id="v-gallery_link" class="nav-item nav-link" href="#v-gallery">Virtual Gallery</a>
             <a id="price_link" class="nav-item nav-link" href="#price">Cooperation</a>
             <a id="contact_link" class="nav-item nav-link" href="#contact">Contact</a>
@@ -171,50 +93,54 @@
       <div id="practice" class="pic-page" data-menu-offset="-80">
         <h1>練習<br>practice</h1>
         <div id="pic-1" class="pic-gallery gallery-animate"> 
-          <div class="item target" data-src="img/owl1.jpg"><img src="img/owl1.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl2.jpg"><img src="img/owl2.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/test.jpg"><img src="img/test.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl3.jpg"><img src="img/owl3.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl4.jpg"><img src="img/owl4.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl5.jpg"><img src="img/owl5.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl6.jpg"><img src="img/owl6.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl7.jpg"><img src="img/owl7.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl8.jpg"><img src="img/owl8.jpg" alt="Owl Image"></div>
+          <div class="item target img1" data-src="img/practice/body_study1.png"><img src="img/practice/body_study1.png" alt="body_study1"></div>
+          <div class="item target img2" data-src="img/practice/body_study2.png"><img src="img/practice/body_study2.png" alt="body_study2"></div>
+          <div class="item target img3" data-src="img/practice/Krenz_W1.png"><img src="img/practice/Krenz_W1.png" alt="Krenz_W1"></div>
+          <div class="item target img4" data-src="img/practice/Krenz_W2.png"><img src="img/practice/Krenz_W2.png" alt="Krenz_W2"></div>
+          <div class="item target img5" data-src="img/practice/Krenz_W3.png"><img src="img/practice/Krenz_W3.png" alt="Krenz_W3"></div>
+          <div class="item target img6" data-src="img/practice/Krenz_W4.png"><img src="img/practice/Krenz_W4.png" alt="Krenz_W4"></div>
+          <div class="item target img7" data-src="img/practice/Krenz_W5.png"><img src="img/practice/Krenz_W5.png" alt="Krenz_W5"></div>
+          <div class="item target img8" data-src="img/practice/Krenz_W6.png"><img src="img/practice/Krenz_W6.png" alt="Krenz_W6"></div>
         </div>
       </div>
       <div class="hr"></div>
       <div id="tuya" class="pic-page" data-menu-offset="-100">
-        <h1>塗鴉<br>tuya</h1>
+        <h1>塗鴉<br>Graffiti</h1>
         <div id="pic-2" class="pic-gallery gallery-animate"> 
-          <div class="item target" data-src="img/owl1.jpg"><img src="img/owl1.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl2.jpg"><img src="img/owl2.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/test.jpg"><img src="img/test.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl3.jpg"><img src="img/owl3.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl4.jpg"><img src="img/owl4.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl5.jpg"><img src="img/owl5.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl6.jpg"><img src="img/owl6.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl7.jpg"><img src="img/owl7.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl8.jpg"><img src="img/owl8.jpg" alt="Owl Image"></div>
+          <div class="item target img1" data-src="img/graffiti/chiya.png"><img src="img/graffiti/chiya.png" alt="chiya"></div>
+          <div class="item target img2" data-src="img/graffiti/kurumi.png"><img src="img/graffiti/kurumi.png" alt="kurumi"></div>
+          <div class="item target img3" data-src="img/graffiti/kurumi_R18.png"><img src="img/graffiti/kurumi_R18.png" alt="kurumi_R18"></div>
+          <div class="item target img4" data-src="img/graffiti/Raven_Branwen.png"><img src="img/graffiti/Raven_ Branwen.png" alt="Raven_ Branwen"></div>
+          <div class="item target img5" data-src="img/graffiti/Sorceress.png"><img src="img/graffiti/Sorceress.png" alt="Sorceress"></div>
+          <div class="item target img6" data-src="img/graffiti/zero_two.png"><img src="img/graffiti/zero_two.png" alt="zero_two"></div>
+          <div class="item target img7" data-src="img/graffiti/zero_two_R18.png"><img src="img/graffiti/zero_two_R18.png" alt="zero_two_R18"></div>
+          <div class="item target img8" data-src="img/graffiti/情人節快樂.png"><img src="img/graffiti/情人節快樂.png" alt="情人節快樂"></div>
+          <div class="item target img9" data-src="img/graffiti/薛南賀圖.jpg"><img src="img/graffiti/薛南賀圖.jpg" alt="薛南賀圖"></div>
         </div>
       </div>
       <div class="hr"></div>
       <div id="hai" class="pic-page" data-menu-offset="-100">
-        <h1>還有啥<br>haiyousha</h1>
+        <h1>創作<br>Creation</h1>
         <div id="pic-3" class="pic-gallery gallery-animate"> 
-          <div class="item target" data-src="img/owl1.jpg"><img src="img/owl1.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl2.jpg"><img src="img/owl2.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/test.jpg"><img src="img/test.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl3.jpg"><img src="img/owl3.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl4.jpg"><img src="img/owl4.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl5.jpg"><img src="img/owl5.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl6.jpg"><img src="img/owl6.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl7.jpg"><img src="img/owl7.jpg" alt="Owl Image"></div>
-          <div class="item target" data-src="img/owl8.jpg"><img src="img/owl8.jpg" alt="Owl Image"></div>
+          <div class="item target img1" data-src="img/creation/2016萬聖節.png"><img src="img/creation/2016萬聖節.png" alt="2016萬聖節"></div>
+          <div class="item target img2" data-src="img/creation/2017丁酉.png"><img src="img/creation/2017丁酉.png" alt="2017丁酉"></div>
+          <div class="item target img3" data-src="img/creation/2017萬聖節-狂三.png"><img src="img/creation/2017萬聖節-狂三.png" alt="2017萬聖節-狂三"></div>
+          <div class="item target img4" data-src="img/creation/2B.png"><img src="img/creation/2B.png" alt="2B"></div>
+          <div class="item target img5" data-src="img/creation/miku-10th.png"><img src="img/creation/miku-10th.png" alt="miku-10th"></div>
+          <div class="item target img6" data-src="img/creation/Ruby.png"><img src="img/creation/Ruby.png" alt="Ruby"></div>
+          <div class="item target img7" data-src="img/creation/世大運-230.png"><img src="img/creation/世大運-230.png" alt="世大運-230"></div>
+          <div class="item target img8" data-src="img/creation/乘龍.png"><img src="img/creation/乘龍.png" alt="乘龍"></div>
+          <div class="item target img9" data-src="img/creation/狂三-聖誕.png"><img src="img/creation/狂三-聖誕.png" alt="狂三-聖誕"></div>
+          <div class="item target img10" data-src="img/creation/狂三.png"><img src="img/creation/狂三.png" alt="狂三"></div>
+          <div class="item target img11" data-src="img/creation/狂三毛衣(R15).png"><img src="img/creation/狂三毛衣(R15).png" alt="狂三毛衣(R15)"></div>
         </div>
       </div>
       <div class="hr"></div>
       <div id="v-gallery" class="v-gallery" data-menu-offset="-100">
         <h1 style="padding-top: 50px;">虛擬畫廊這裡</h1>
+        <div id = "gallary">
+          <canvas id="canvas" onmousemove = "mouseMoveCallBack(event)" onmousedown="mouseDown()" onmouseup="mouseUp()"></canvas>
+        </div>
       </div>
       <div class="hr"></div>
       <div id="price" class="price" data-menu-offset="-100">

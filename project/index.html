@@ -1,0 +1,255 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDIO MAOCHINN</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="js/skrollr.js"></script>
+    <script src="js/skrollr.menu.min.js"></script>
+    <script>
+      //$("#intro_link")[0].click();
+      function isElementInViewport(el) {
+        var rect     = el.getBoundingClientRect(),
+            vWidth   = window.innerWidth || doc.documentElement.clientWidth,
+            vHeight  = window.innerHeight || doc.documentElement.clientHeight,
+            efp      = function (x, y) { return document.elementFromPoint(x, y) };     
+
+        // Return false if it's not in the viewport
+        if (rect.right < 0 || rect.bottom < 0 
+                || rect.left > vWidth || rect.top > vHeight)
+            return false;
+
+        // Return true if any of its four corners are visible
+        return (
+              el.contains(efp(rect.left,  rect.top))
+          ||  el.contains(efp(rect.right, rect.top))
+          ||  el.contains(efp(rect.right, rect.bottom))
+          ||  el.contains(efp(rect.left,  rect.bottom))
+        );
+      }
+      $(document).ready(function() {
+        
+        let home = document.getElementById('home');
+        let intro = document.getElementById('intro');
+        let practice = document.getElementById('practice');
+        let tuya = document.getElementById('tuya');
+        let hai = document.getElementById('hai');
+        let v_gallery = document.getElementById('v-gallery');
+        let contact = document.getElementById('contact');
+        let price = document.getElementById('price');
+
+        $("#pic-1").owlCarousel({
+          autoPlay: 3000, //Set AutoPlay to 3 seconds
+          items : 4,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [768,1]
+        }).lightGallery({
+          selector: '.target'
+        });
+
+        $("#pic-2").owlCarousel({
+          autoPlay: 2499, //Set AutoPlay to 3 seconds
+          items : 4,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [768,1]
+        }).lightGallery({
+          selector: '.target'
+        });
+
+        $("#pic-3").owlCarousel({
+          autoPlay: 2699, //Set AutoPlay to 3 seconds
+          items : 4,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [768,1]
+        }).lightGallery({
+          selector: '.target'
+        });
+
+        $('.lg-close').click(function(){
+          $('.gallery-animate').trigger('owl.play', 3000);
+        });
+        
+        var s = skrollr.init({
+          smoothScrolling : true
+        });
+        skrollr.menu.init(s, {
+          animate: true,
+          updateUrl: false
+        })
+
+        window.addEventListener('scroll', function(){
+          let target;
+          if(isElementInViewport(home)){
+            target = 'home';
+          }
+          else if(isElementInViewport(intro)){
+            target = 'intro';
+          }
+          else if(isElementInViewport(practice)){
+            target = 'practice'
+          }
+          else if(isElementInViewport(tuya)){
+            target = 'tuya';
+          }
+          else if(isElementInViewport(hai)){
+            target = 'hai';
+          }
+          else if(isElementInViewport(v_gallery)){
+            target = 'v-gallery';
+          }
+          else if(isElementInViewport(price)){
+            target = 'price';
+          }
+          else if(isElementInViewport(contact)){
+            target = 'contact';
+          }
+          if(typeof target !== 'undefined'){
+            target += '_link';
+            $('.navbar-nav a').removeClass('nav-active');
+            $('#' + target).addClass('nav-active');
+          }
+
+          let animate = document.querySelectorAll('.price-content-div');
+          if(isElementInViewport(animate[0]) || isElementInViewport(animate[1]) || isElementInViewport(animate[2]) || isElementInViewport(animate[3])){
+            setTimeout("$('.price-content div').addClass('price-content-animate-active')", 300);
+          }
+          else{
+            $('.price-content div').removeClass('price-content-animate-active');
+          }
+        });
+
+        window.onbeforeunload = function () {
+          window.scrollTo(0, 0);
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a id="home_link" class="nav-item nav-link nav-active" href="#home">Maochinn <span class="sr-only">(current)</span></a>
+            <a id="intro_link" class="nav-item nav-link" href="#intro">Intro</a>
+            <a id="practice_link" class="nav-item nav-link" href="#practice">Practice</a>
+            <a id="tuya_link" class="nav-item nav-link" href="#tuya">Tuya</a>
+            <a id="hai_link" class="nav-item nav-link" href="#hai">Haiyousha</a>
+            <a id="v-gallery_link" class="nav-item nav-link" href="#v-gallery">Virtual Gallery</a>
+            <a id="price_link" class="nav-item nav-link" href="#price">Cooperation</a>
+            <a id="contact_link" class="nav-item nav-link" href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="home">
+        <a>
+          <h1 id="home" data-menu-offset="-500">MAOCHINN</h1>
+        </a>
+      </div>
+      <div id="intro" class="hr" data-menu-offset="-100"></div>
+      <div class="intro">
+        <h1>帽捲</h1>
+        <h2>海大資深肥宅</h2>
+        <p>
+          哈囉哈囉哈囉<br>
+          你好你好你好<br>
+          徵婆 O_&lt;
+        </p>
+      </div>
+      <div class="hr"></div>
+      <div id="practice" class="pic-page" data-menu-offset="-80">
+        <h1>練習<br>practice</h1>
+        <div id="pic-1" class="pic-gallery gallery-animate"> 
+          <div class="item target" data-src="img/owl1.jpg"><img src="img/owl1.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl2.jpg"><img src="img/owl2.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/test.jpg"><img src="img/test.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl3.jpg"><img src="img/owl3.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl4.jpg"><img src="img/owl4.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl5.jpg"><img src="img/owl5.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl6.jpg"><img src="img/owl6.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl7.jpg"><img src="img/owl7.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl8.jpg"><img src="img/owl8.jpg" alt="Owl Image"></div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="tuya" class="pic-page" data-menu-offset="-100">
+        <h1>塗鴉<br>tuya</h1>
+        <div id="pic-2" class="pic-gallery gallery-animate"> 
+          <div class="item target" data-src="img/owl1.jpg"><img src="img/owl1.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl2.jpg"><img src="img/owl2.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/test.jpg"><img src="img/test.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl3.jpg"><img src="img/owl3.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl4.jpg"><img src="img/owl4.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl5.jpg"><img src="img/owl5.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl6.jpg"><img src="img/owl6.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl7.jpg"><img src="img/owl7.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl8.jpg"><img src="img/owl8.jpg" alt="Owl Image"></div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="hai" class="pic-page" data-menu-offset="-100">
+        <h1>還有啥<br>haiyousha</h1>
+        <div id="pic-3" class="pic-gallery gallery-animate"> 
+          <div class="item target" data-src="img/owl1.jpg"><img src="img/owl1.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl2.jpg"><img src="img/owl2.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/test.jpg"><img src="img/test.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl3.jpg"><img src="img/owl3.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl4.jpg"><img src="img/owl4.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl5.jpg"><img src="img/owl5.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl6.jpg"><img src="img/owl6.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl7.jpg"><img src="img/owl7.jpg" alt="Owl Image"></div>
+          <div class="item target" data-src="img/owl8.jpg"><img src="img/owl8.jpg" alt="Owl Image"></div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="v-gallery" class="v-gallery" data-menu-offset="-100">
+        <h1 style="padding-top: 50px;">虛擬畫廊這裡</h1>
+      </div>
+      <div class="hr"></div>
+      <div id="price" class="price" data-menu-offset="-100">
+        <h1 style="padding-top: 50px; width: 100%;">合作</h1>
+        <div class="price-content">
+          <div class="price-content-div price-content-animate-left">
+
+          </div>
+          <div class="price-content-div price-content-animate-right">
+
+          </div>
+          <div class="price-content-div price-content-animate-left">
+
+          </div>
+          <div class="price-content-div price-content-animate-right">
+
+          </div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="contact" class="footer" data-menu-offset="-80">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="img/facebook-logo-button.svg">
+          </div>
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmaochinnn%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="img/facebook-logo-button.svg">
+          </div>
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmaochinnn%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>

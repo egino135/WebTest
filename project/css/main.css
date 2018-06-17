@@ -191,11 +191,13 @@ h1 {
   transform: translate3d(0, 0, 0);
   opacity: 1;
 }
-
 .price-content-div img {
   width: 80%;
 }
-
+#gallary {
+  text-align: center;
+  margin-top: 50px;
+}
 @media only screen and (max-width: 990px) {
   h1 {
     font-size: 10vw;

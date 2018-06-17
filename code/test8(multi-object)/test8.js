@@ -84,25 +84,17 @@ var imgInfo = [
 	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
 	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
 	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
-	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
-	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
-	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
-	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
 	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},];
 var imgPos = [
-	{translate: glm.vec3(230.0, 0.0, 200.0),	rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, 150.0),	rotate: -90.0},
-	{translate: glm.vec3(230.0, 0.0, 100.0),	rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, 50.0),	rotate: -90.0},
-	{translate: glm.vec3(230.0, 0.0, 0.0),	rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, -50.0), rotate: -90.0},
-	{translate: glm.vec3(230.0, 0.0, -100.0),rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, -150.0),rotate: -90.0},
-	{translate: glm.vec3(230.0, 0.0, -200.0),rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, -250.0),rotate: -90.0},
-	{translate: glm.vec3(230.0, 0.0, -300.0),rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, -350.0),rotate: -90.0},
-	{translate: glm.vec3(230.0, 0.0, -400.0),rotate: -90.0},];
+	{translate: glm.vec3(230.0, 0.0, -450.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -550.0),rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -650.0),rotate: -90.0},];
 var floorPos = {width: 500, height: 5, length: 500}
 var wallPos = [
 	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
@@ -312,7 +304,7 @@ function renderImage(gl, programInfo, squareVaoInfo, imgPos, imgInfo)
 	var model = glm.mat4();
 	model = glm.translate(model, imgPos.translate);
 	model = glm.rotate(model, glm.radians(imgPos.rotate), glm.vec3(0.0, 1.0, 0.0));
-	model = glm.scale(model, glm.vec3(imgInfo.width / 20.0, imgInfo.height / 20.0, 1.0));
+	model = glm.scale(model, glm.vec3(imgInfo.width / 16.0, imgInfo.height / 16.0, 1.0));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 	

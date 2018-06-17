@@ -77,16 +77,32 @@ var SquareVertex = new Float32Array([
 		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0]);
 var imgInfo = [
 	{path: "../img/graffiti/kurumi.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/Raven_ Branwen.png", 	width: 600, height:800, texture: null},
+	{path: "../img/graffiti/Raven_ Branwen.png",width: 600, height:800, texture: null},
 	{path: "../img/graffiti/chiya.png", 		width: 600, height:800, texture: null},
 	{path: "../img/graffiti/zero_two.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null}];
+	{path: "../img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},];
 var imgPos = [
-	{translate: glm.vec3(100.0, 0.0, 0.0),	rotate: -90.0},
-	{translate: glm.vec3(100.0, 0.0, -50.0), rotate: -90.0},
-	{translate: glm.vec3(100.0, 0.0, -100.0),rotate: -90.0},
-	{translate: glm.vec3(100.0, 0.0, -150.0),rotate: -90.0},
-	{translate: glm.vec3(100.0, 0.0, -200.0),rotate: -90.0}];
+	{translate: glm.vec3(245.0, 0.0, 200.0),	rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, 150.0),	rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, 100.0),	rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, 50.0),	rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, 0.0),	rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -50.0), rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -100.0),rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -150.0),rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -200.0),rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -250.0),rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -300.0),rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -350.0),rotate: -90.0},
+	{translate: glm.vec3(245.0, 0.0, -400.0),rotate: -90.0},];
 var floorPos = {width: 500, height: 5, length: 500}
 var wallPos = [
 	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
@@ -344,7 +360,7 @@ function renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture)
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 
-	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	gl.bindTexture(gl.TEXTURE_2D, wallTexture);
 	
 	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
@@ -359,7 +375,7 @@ function renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture)
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 
-	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	gl.bindTexture(gl.TEXTURE_2D, wallTexture);
 	
 	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
@@ -509,7 +525,7 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	
 	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
 	
-	renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture);
+	renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture, wallTexture);
 	
 	
 	for(var i = 0;i < imgPos.length;i++)

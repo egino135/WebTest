@@ -93,8 +93,8 @@ var wallPos = [
 	{translate: glm.vec3(floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
 	{translate: glm.vec3(0.0, 0.0, -floorPos.length * 3.0 / 2.0),	width: floorPos.width,	height: 300.0, length: 10.0}, 
 	{translate: glm.vec3(0.0, 0.0, floorPos.length / 2.0),			width: floorPos.width,	height: 300.0, length: 10.0},
-	{translate: glm.vec3(-floorPos.width, 0.0, -floorPos.length),	width: floorPos.width,	height: 300.0, length: floorPos.length},
-	{translate: glm.vec3(floorPos.width, 0.0, -floorPos.length),	width: floorPos.width,	height: 300.0, length: floorPos.length},	];
+	{translate: glm.vec3(-floorPos.width, 0.0, -floorPos.length),	width: 10.0,	height: 300.0, length: floorPos.length},
+	{translate: glm.vec3(floorPos.width, 0.0, -floorPos.length),	width: 10.0,	height: 300.0, length: floorPos.length},	];
 function createShader(gl, source, type) 
 {
 	var shader = gl.createShader(type);

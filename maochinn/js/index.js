@@ -29,7 +29,7 @@ $(document).ready(function() {
   let contact = document.getElementById('contact');
   let price = document.getElementById('price');
   let cooperate = document.getElementById('cooperate');
-
+  var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
   /*$("#pic-1").owlCarousel({
     autoPlay: 3000, //Set AutoPlay to 3 seconds
     items : 4,
@@ -82,6 +82,7 @@ $(document).ready(function() {
     $('.gallery-animate').trigger('owl.play', 3000);
   });
   
+  /*
   var s = skrollr.init({
     smoothScrolling : true
   });
@@ -89,6 +90,15 @@ $(document).ready(function() {
     animate: true,
     updateUrl: false
   })
+  */
+
+  $('a.nav-link').click(function(){
+    let target = this.id.split('_')[0];
+    $body.stop().animate({
+			scrollTop: $('#' + target).offset().top - 100
+		}, 800);
+    return false;
+  });
 
   window.addEventListener('scroll', function(){
     let target;
@@ -108,7 +118,7 @@ $(document).ready(function() {
       target = 'hai';
     }
     else if(isElementInViewport(cooperate)){
-      target = 'coo';
+      target = 'cooperate';
     }
     else if(isElementInViewport(v_gallery)){
       target = 'v-gallery';

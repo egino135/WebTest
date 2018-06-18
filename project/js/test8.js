@@ -77,16 +77,61 @@ var SquareVertex = new Float32Array([
 		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0]);
 var imgInfo = [
 	{path: "../img/graffiti/kurumi.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/Raven_ Branwen.png", 	width: 600, height:800, texture: null},
+	{path: "../img/graffiti/Raven_ Branwen.png",width: 600, height:800, texture: null},
 	{path: "../img/graffiti/chiya.png", 		width: 600, height:800, texture: null},
 	{path: "../img/graffiti/zero_two.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null}];
+	{path: "../img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null},
+	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "../img/creation/2B.png", 			width: 800, height:1131, texture: null},
+	{path: "../img/creation/2016萬聖節.png", 	width: 800, height:1132, texture: null},
+	{path: "../img/creation/2017丁酉.png", 		width: 800, height:1131, texture: null},
+	{path: "../img/creation/2017萬聖節-狂三.png",width: 800, height:626, texture: null},
+	{path: "../img/creation/狂三.png", 			width: 800, height:1132, texture: null},
+	{path: "../img/creation/狂三毛衣(R15).png", width: 800, height:1131, texture: null},
+	{path: "../img/creation/狂三-聖誕.png", 	width: 800, height:1132, texture: null},
+	{path: "../img/creation/miku-10th.png", 	width: 800, height:914, texture: null},
+	{path: "../img/creation/奧茲魔女.png", 		width: 800, height:1131, texture: null},
+	{path: "../img/creation/黑貞德.png", 		width: 800, height:1131, texture: null},
+	{path: "../img/creation/酒吞童子.png", 		width: 800, height:1119, texture: null},
+	{path: "../img/creation/Ruby.png", 			width: 800, height:1132, texture: null},];
 var imgPos = [
-	{translate: glm.vec3(50.0, 0.0, 0.0),	rotate: -90.0},
-	{translate: glm.vec3(50.0, 0.0, -50.0), rotate: -90.0},
-	{translate: glm.vec3(50.0, 0.0, -100.0),rotate: -90.0},
-	{translate: glm.vec3(50.0, 0.0, -150.0),rotate: -90.0},
-	{translate: glm.vec3(50.0, 0.0, -200.0),rotate: -90.0}];
+	{translate: glm.vec3(230.0, 0.0, 150.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, 50.0),		rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -50.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -150.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -250.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -350.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -450.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -550.0),	rotate: -90.0},
+	{translate: glm.vec3(230.0, 0.0, -650.0),	rotate: -90.0},
+	{translate: glm.vec3(-230.0, 0.0, 150.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, 50.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -50.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -150.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -250.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -350.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -450.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -550.0),	rotate: 90.0},
+	{translate: glm.vec3(-230.0, 0.0, -650.0),	rotate: 90.0},];
+var floorPos = {width: 500, height: 5, length: 500}
+var wallPos = [
+	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
+	{translate: glm.vec3(floorPos.width / 2.0, 0.0, 0.0),			width: 10.0,			height: 300.0, length: floorPos.length}, 
+	{translate: glm.vec3(0.0, 0.0, -floorPos.length * 3.0 / 2.0),	width: floorPos.width,	height: 300.0, length: 10.0}, 
+	{translate: glm.vec3(0.0, 0.0, floorPos.length / 2.0),			width: floorPos.width,	height: 300.0, length: 10.0},
+	{translate: glm.vec3(-floorPos.width / 2.0, 0.0, -floorPos.length),	width: 10.0,	height: 300.0, length: floorPos.length},
+	{translate: glm.vec3(floorPos.width /2.0, 0.0, -floorPos.length),	width: 10.0,	height: 300.0, length: floorPos.length},	];
+var columnPos = [
+	{translate: glm.vec3(125.0, 0.0, 200.0),	width: 30.0, height: 300.0, length: 30.0}, 
+	{translate: glm.vec3(125.0, 0.0, 0.0),		width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(125.0, 0.0, -200.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(125.0, 0.0, -400.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(125.0, 0.0, -600.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, 200.0),	width: 30.0, height: 300.0, length: 30.0}, 
+	{translate: glm.vec3(-125.0, 0.0, 0.0),		width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, -200.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, -400.0),	width: 30.0, height: 300.0, length: 30.0},
+	{translate: glm.vec3(-125.0, 0.0, -600.0),	width: 30.0, height: 300.0, length: 30.0},];
 function createShader(gl, source, type) 
 {
 	var shader = gl.createShader(type);
@@ -95,7 +140,8 @@ function createShader(gl, source, type)
 	return shader;
 }
 var floorTexture = null;
-
+var wallTexture = null;
+var columnTexture = null;
 
 
 function createProgram(gl, vertexShaderSource, fragmentShaderSource) 
@@ -276,7 +322,7 @@ function renderImage(gl, programInfo, squareVaoInfo, imgPos, imgInfo)
 	var model = glm.mat4();
 	model = glm.translate(model, imgPos.translate);
 	model = glm.rotate(model, glm.radians(imgPos.rotate), glm.vec3(0.0, 1.0, 0.0));
-	model = glm.scale(model, glm.vec3(imgInfo.width / 20.0, imgInfo.height / 20.0, 1.0));
+	model = glm.scale(model, glm.vec3(imgInfo.width / 16.0, imgInfo.height / 16.0, 1.0));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 	
@@ -287,15 +333,89 @@ function renderImage(gl, programInfo, squareVaoInfo, imgPos, imgInfo)
 	
 	gl.drawArrays(gl.TRIANGLES, squareVaoInfo.offset, squareVaoInfo.count);
 }
-function renderFloor(gl, programInfo, cubeVaoInfo, floorTexture)
+function renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture)
 {
 	var model = glm.mat4();
-	model = glm.translate(model, glm.vec3(0.0, -30.0, 0.0));
-	model = glm.scale(model, glm.vec3(500.0, 5.0, 500.0));
+	model = glm.translate(model, glm.vec3(0.0, -50.0, 0.0));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 
 	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, -50.0, -floorPos.length));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, floorTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, 150.0, 0.0));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, wallTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+	
+	
+	
+	model = glm.mat4();
+	model = glm.translate(model, glm.vec3(0.0, 150.0, -floorPos.length));
+	model = glm.scale(model, glm.vec3(floorPos.width, floorPos.height, floorPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, wallTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+}
+function renderWalls(gl, programInfo, cubeVaoInfo, wallPos, wallTexture)
+{
+	var model = glm.mat4();
+	model = glm.translate(model, wallPos.translate);
+	model = glm.scale(model, glm.vec3(wallPos.width, wallPos.height, wallPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, wallTexture);
+	
+	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
+	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
+	
+	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
+}
+function renderColumns(gl, programInfo, cubeVaoInfo, columnPos, columnTexture)
+{
+	var model = glm.mat4();
+	model = glm.translate(model, columnPos.translate);
+	model = glm.scale(model, glm.vec3(columnPos.width, columnPos.height, columnPos.length));
+	
+	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
+
+	gl.bindTexture(gl.TEXTURE_2D, columnTexture);
 	
 	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);
@@ -345,7 +465,8 @@ function main()
 	}
 	
 	floorTexture = loadImg2Texture(gl, "../img/scene/floor.jpg");
-	
+	wallTexture = loadImg2Texture(gl, "../img/scene/wall.jpg")
+	columnTexture = loadImg2Texture(gl, "../img/scene/column.jpg")
 		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	
 	
@@ -414,11 +535,20 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	
 	gl.drawArrays(gl.TRIANGLES, cubeVaoInfo.offset, cubeVaoInfo.count);
 	
-	renderFloor(gl, programInfo, cubeVaoInfo, floorTexture);
+	renderFloor(gl, programInfo, cubeVaoInfo, floorPos, floorTexture, wallTexture);
+	
 	
 	for(var i = 0;i < imgPos.length;i++)
 	{
 		renderImage(gl, programInfo, squareVaoInfo, imgPos[i], imgInfo[i]);
+	}
+	for(var w of wallPos)
+	{
+		renderWalls(gl, programInfo, cubeVaoInfo, w, wallTexture)	
+	}
+	for(var c of columnPos)
+	{
+		renderColumns(gl, programInfo, cubeVaoInfo, c, columnTexture)	
 	}
 	
 	
@@ -427,15 +557,18 @@ function moveCamera(camera, direction)
 {
 	var velocity = camera.moveSpeed * deltaTime;
 
-	const front = glm.mul(camera.front, velocity);
+	var front = glm.mul(camera.front, velocity);
+	front = glm.vec3(front.x, 0.0, front.z);
+	var right = glm.mul(camera.right, velocity);
+	right = glm.vec3(right.x, 0.0, right.z);
 	if (direction == FORWARD)
-		camera.position = glm.add(camera.position, glm.mul(camera.front, velocity));
+		camera.position = glm.add(camera.position, front);
 	if (direction == BACKWARD)
-		camera.position = glm.add(camera.position, glm.mul(camera.front, velocity * -1.0));
+		camera.position = glm.add(camera.position, glm.mul(front, -1.0));
 	if (direction == LEFT)
-		camera.position = glm.add(camera.position, glm.mul(camera.right, velocity * -1.0));
+		camera.position = glm.add(camera.position, glm.mul(right, -1.0));
 	if (direction == RIGHT)
-		camera.position = glm.add(camera.position, glm.mul(camera.right, velocity));
+		camera.position = glm.add(camera.position, right);
 	
 	
 	

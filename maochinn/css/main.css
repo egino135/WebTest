@@ -167,7 +167,7 @@ h1 {
   width: 90%;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -194,6 +194,9 @@ h1 {
 }
 .price-content-div img {
   width: 80%;
+}
+.price-hint {
+  margin-bottom: 50px;
 }
 #gallary {
   text-align: center;

@@ -76,24 +76,24 @@ var SquareVertex = new Float32Array([
 		-0.5, 0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 1.0,
 		-0.5, -0.5, 0.0, 	0.0, 0.0, 		-1.0, 0.0, 0.0]);
 var imgInfo = [
-	{path: "../img/graffiti/kurumi.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/Raven_Branwen.png",width: 600, height:800, texture: null},
-	{path: "../img/graffiti/chiya.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/zero_two.png", 		width: 600, height:800, texture: null},
-	{path: "../img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null},
-	{path: "../img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
-	{path: "../img/creation/2B.png", 			width: 800, height:1131, texture: null},
-	{path: "../img/creation/2016萬聖節.png", 	width: 800, height:1132, texture: null},
-	{path: "../img/creation/2017丁酉.png", 		width: 800, height:1131, texture: null},
-	{path: "../img/creation/2017萬聖節-狂三.png",width: 800, height:626, texture: null},
-	{path: "../img/creation/狂三.png", 			width: 800, height:1132, texture: null},
-	{path: "../img/creation/狂三毛衣(R15).png", width: 800, height:1131, texture: null},
-	{path: "../img/creation/狂三-聖誕.png", 	width: 800, height:1132, texture: null},
-	{path: "../img/creation/miku-10th.png", 	width: 800, height:914, texture: null},
-	{path: "../img/creation/奧茲魔女.png", 		width: 800, height:1131, texture: null},
-	{path: "../img/creation/黑貞德.png", 		width: 800, height:1131, texture: null},
-	{path: "../img/creation/酒吞童子.png", 		width: 800, height:1119, texture: null},
-	{path: "../img/creation/Ruby.png", 			width: 800, height:1132, texture: null},];
+	{path: "img/graffiti/kurumi.png", 		width: 600, height:800, texture: null},
+	{path: "img/graffiti/Raven_Branwen.png",width: 600, height:800, texture: null},
+	{path: "img/graffiti/chiya.png", 		width: 600, height:800, texture: null},
+	{path: "img/graffiti/zero_two.png", 		width: 600, height:800, texture: null},
+	{path: "img/graffiti/Sorceress.png", 	width: 600, height:800, texture: null},
+	{path: "img/graffiti/lin.png", 			width: 800, height:1119, texture: null},
+	{path: "img/creation/2B.png", 			width: 800, height:1131, texture: null},
+	{path: "img/creation/2016萬聖節.png", 	width: 800, height:1132, texture: null},
+	{path: "img/creation/2017丁酉.png", 		width: 800, height:1131, texture: null},
+	{path: "img/creation/2017萬聖節-狂三.png",width: 800, height:626, texture: null},
+	{path: "img/creation/狂三.png", 			width: 800, height:1132, texture: null},
+	{path: "img/creation/狂三毛衣(R15).png", width: 800, height:1131, texture: null},
+	{path: "img/creation/狂三-聖誕.png", 	width: 800, height:1132, texture: null},
+	{path: "img/creation/miku-10th.png", 	width: 800, height:914, texture: null},
+	{path: "img/creation/奧茲魔女.png", 		width: 800, height:1131, texture: null},
+	{path: "img/creation/黑貞德.png", 		width: 800, height:1131, texture: null},
+	{path: "img/creation/酒吞童子.png", 		width: 800, height:1119, texture: null},
+	{path: "img/creation/Ruby.png", 			width: 800, height:1132, texture: null},];
 var imgPos = [
 	{translate: glm.vec3(230.0, 0.0, 150.0),	rotate: -90.0},
 	{translate: glm.vec3(230.0, 0.0, 50.0),		rotate: -90.0},
@@ -464,9 +464,9 @@ function main()
 		info.texture = loadImg2Texture(gl, info.path);
 	}
 	
-	floorTexture = loadImg2Texture(gl, "../img/scene/floor.jpg");
-	wallTexture = loadImg2Texture(gl, "../img/scene/wall.jpg")
-	columnTexture = loadImg2Texture(gl, "../img/scene/column.jpg")
+	floorTexture = loadImg2Texture(gl, "img/scene/floor.jpg");
+	wallTexture = loadImg2Texture(gl, "img/scene/wall.jpg")
+	columnTexture = loadImg2Texture(gl, "img/scene/column.jpg")
 		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	
 	

@@ -103,7 +103,7 @@ $(document).ready(function() {
   window.addEventListener('scroll', function(){
     let target;
     if(isElementInViewport(home)){
-      target = 'home';
+      target = 'pagetop';
     }
     else if(isElementInViewport(intro)){
       target = 'intro';

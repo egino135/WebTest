@@ -147,15 +147,21 @@ h1 {
 .footer-content {
   margin-top: 50px;
   margin-bottom: 100px;
+  width: 33%;
 }
 .footer .footer-logo {
   display: flex;
   justify-content: center;
   padding-bottom: 30px;
+  width: 100%;
 }
 .footer-logo img {
   width: 60px;
   height: 60px;
+}
+.footer-content a img {
+  width: 25%;
+  margin: 10px;
 }
 .price {
   width: 90vw;
@@ -275,6 +281,11 @@ h1 {
   }
   canvas {
     display: none;
+  }
+  .footer-content {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    width: 100%;
   }
 }
 

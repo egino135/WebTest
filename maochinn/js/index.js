@@ -18,6 +18,7 @@ function isElementInViewport(el) {
     ||  el.contains(efp(rect.left,  rect.bottom))
   );
 }
+
 $(document).ready(function() {
   
   let home = document.getElementById('home');
@@ -30,36 +31,17 @@ $(document).ready(function() {
   let price = document.getElementById('price');
   let cooperate = document.getElementById('cooperate');
   var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
-  /*$("#pic-1").owlCarousel({
-    autoPlay: 3000, //Set AutoPlay to 3 seconds
-    items : 4,
-    itemsDesktop : [1199,3],
-    itemsDesktopSmall : [768,1]
-  }).lightGallery({
-    selector: '.target'
-  });*/
+
   $("#pic-1").owlCarousel({
     autoPlay: 3000, //Set AutoPlay to 3 seconds
     items : 4,
     itemsDesktop : [1199,3],
     itemsDesktopSmall : [768,1],
-    /*afterUpdate: function () {
-        updateSize();
-    },
-    afterInit:function(){
-        updateSize();
-    }*/
+
   }).lightGallery({
     selector: '.target'
   });
-  function updateSize(){
-    var minHeight=parseInt($('.item').eq(0).css('height'));
-    $('.item').each(function () {
-        var thisHeight = parseInt($(this).css('height'));
-        minHeight=(minHeight<=thisHeight?minHeight:thisHeight);
-    });
-    $('.owl-wrapper-outer').css('height',minHeight+'px');
-  }
+
   $("#pic-2").owlCarousel({
     autoPlay: 2499, //Set AutoPlay to 3 seconds
     items : 4,
@@ -82,16 +64,6 @@ $(document).ready(function() {
     $('.gallery-animate').trigger('owl.play', 3000);
   });
   
-  /*
-  var s = skrollr.init({
-    smoothScrolling : true
-  });
-  skrollr.menu.init(s, {
-    animate: true,
-    updateUrl: false
-  })
-  */
-
   $('a.nav-link').click(function(){
     let target = this.id.split('_')[0];
     $body.stop().animate({
@@ -100,6 +72,12 @@ $(document).ready(function() {
     return false;
   });
 
+  $('#intro-go').click(function(){
+    $body.stop().animate({
+			scrollTop: $('#contact').offset().top - 100
+		}, 800);
+    return false;
+  });
   window.addEventListener('scroll', function(){
     let target;
     if(isElementInViewport(home)){

@@ -243,6 +243,7 @@ h1 {
 #social-link {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 #social-link img {
   width: 100%;
@@ -250,6 +251,7 @@ h1 {
 #social-link div {
   width: 25%;
   padding: 10px;
+  margin: 20px;
 }
 @media only screen and (max-width: 900px) {
   h1 {

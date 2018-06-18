@@ -159,10 +159,6 @@ h1 {
   width: 60px;
   height: 60px;
 }
-.footer-content a img {
-  width: 25%;
-  margin: 10px;
-}
 .price {
   width: 90vw;
   background-color: rgba(255, 255, 255, 1);
@@ -237,7 +233,21 @@ h1 {
   margin-bottom: 50px;
   display: none;
 }
-
+#maillink {
+  font-size: 2vw;
+  color: white;
+}
+#social-link {
+  display: flex;
+  flex-wrap: wrap;
+}
+#social-link img {
+  width: 100%;
+}
+#social-link div {
+  width: 25%;
+  padding: 10px;
+}
 @media only screen and (max-width: 900px) {
   h1 {
     font-size: 10vw;
@@ -286,6 +296,13 @@ h1 {
     margin-top: 50px;
     margin-bottom: 0px;
     width: 100%;
+  }
+  #maillink {
+    font-size: 5vw;
+  }
+  #social-link div {
+    width: 50%;
+    padding: 10px;
   }
 }
 

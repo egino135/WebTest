@@ -71,13 +71,6 @@ $(document).ready(function() {
 		}, 800);
     return false;
   });
-
-  $('#intro-go').click(function(){
-    $body.stop().animate({
-			scrollTop: $('#contact').offset().top - 100
-		}, 800);
-    return false;
-  });
   window.addEventListener('scroll', function(){
     let target;
     if(isElementInViewport(home)){

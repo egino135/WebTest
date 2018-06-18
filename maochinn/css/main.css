@@ -66,16 +66,17 @@ nav > div > div {
 }
 .intro {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   padding-top: 50px;
   height: 80vh;
   background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
 }
 .intro > h1, .intro > h2 {
   width: 100%;
   text-align: center;
+}
+.intro p {
+  margin-top: 100px;
 }
 .pic-gallery {
   margin-top: 5vh;

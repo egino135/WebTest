@@ -1,257 +1,264 @@
-<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8">
-		<title>Tic-tac-toe</title> 
-        <style type = "text/CSS">
-           table, th, td{
-				border: 1px solid black;
-				border-collapse: collapse;
-				font-family: Calibri;
-				font-size: 48px;
-            }
-			caption {
-				color: navy;
-			}
-			tbody tr {
-				height: 100px;
-			}
-			td {
-				width: 100px;
-				text-align: center;
-			}
-        </style>
-        <script>
-		var raceRecord = [];
-		var count = 0;	//even is X, odd is O
-		var temp;
-		var temp2;
-		var interval = null;
-		var end = false;
-			function start()
-			{
-				var table = document.getElementById("blocks");
-				table.addEventListener( "click", record, false ); 
-				
-			}
-			function replay()
-			{
-				count = 0;
-				end = false;
-				//clear
-				for(var td of raceRecord)
-				{
-					td.innerHTML = "";
-				}
-				interval = window.setInterval( replayRecord, 1000 )
-			}
-			function replayRecord()
-			{
-				if(end == true)return;
-				var td = raceRecord[count];
-				{
-					if(count %2 == 0)	//for X
-					{
-						td.innerHTML = "X";
-					}
-					else
-					{
-						td.innerHTML = "O";
-					}
-					count++;
-					window.setTimeout(decideWin, 3000);
-					if(end == true)
-					{
-						clearInterval(interval);
-					}
-				}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDIO MAOCHINN</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/webgl.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="owl-carousel/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="js/webgl-utils.js"></script>
+    <script src="js/glm-gl-matrix.min.js"></script>
+    <script src="js/glm-js.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/test8.js"></script>
+    
+    <!-- vertex shader -->
+    <script id="3d-vertex-shader" type="x-shader/x-vertex">#version 300 es
+      layout(location = 0) in vec3 in_position;
+      layout(location = 1) in vec3 in_normal;
+      layout(location = 2) in vec2 in_textureCoor;
+      
+      out vec2 textureCoor;
+      
+      uniform mat4 u_model;
+      uniform mat4 u_view;
+      uniform mat4 u_projection;
+      
+      void main() 
+      {
+        gl_Position = u_projection * u_view * u_model * vec4(in_position, 1.0);
+        textureCoor = vec2(in_textureCoor.x, 1.0 - in_textureCoor.y);
+      }
+    </script>
+    <!-- fragment shader -->
+    <script id="3d-fragment-shader" type="x-shader/x-fragment">#version 300 es
+      precision mediump float;
+      
+      in vec2 textureCoor;
+      
+      uniform sampler2D u_texture;
+      
+      out vec4 FragColor;
+      
+      void main() 
+      {
+        FragColor = texture(u_texture, textureCoor);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a id="pagetop_link" class="nav-item nav-link nav-active" href="#home">Maochinn <span class="sr-only">(current)</span></a>
+            <a id="intro_link" class="nav-item nav-link" href="#intro">Intro</a>
+            <a id="practice_link" class="nav-item nav-link" href="#practice">Practice</a>
+            <a id="tuya_link" class="nav-item nav-link" href="#tuya">Graffiti</a>
+            <a id="hai_link" class="nav-item nav-link" href="#hai">Creation</a>
+            <a id="cooperate_link" class="nav-item nav-link" href="#cooperate">Cooperation</a>
+            <a id="v-gallery_link" class="nav-item nav-link" href="#v-gallery">Virtual Gallery</a>
+            <a id="price_link" class="nav-item nav-link" href="#price">Delegation</a>
+            <a id="contact_link" class="nav-item nav-link" href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div id="pagetop" class="home">
+        <a>
+          <h1 id="home" style="width: 100%;"data-menu-offset="-500">MAOCHINN<br><a style="font-size: 2vw;">投影片連結</a></h1>
+        </a>
+      </div>
+      <div id="intro" class="hr" data-menu-offset="-100"></div>
+      <div class="intro">
+        <h1>帽捲</h1>
+        <p>
+          毒瘤畫手/資工碼農/狂三我婆<br>
+          <br>
+          日常練習分享於粉絲專頁<br>
+          繪圖作品分享於Pixiv<br>
+          電腦圖學、機器視覺，程式相關分享於巴哈姆特小屋
+        </p>
+      </div>
+      <div class="hr"></div>
+      <div id="practice" class="pic-page" data-menu-offset="-80">
+        <h1>練習<br>practice</h1>
+        <div id="pic-1" class="pic-gallery gallery-animate"> 
+          <div class="item target img1" data-src="img/practice/body_study1.png"><img src="img/practice/body_study1.png" alt="body_study1"></div>
+          <div class="item target img2" data-src="img/practice/body_study2.png"><img src="img/practice/body_study2.png" alt="body_study2"></div>
+          <div class="item target img3" data-src="img/practice/Krenz_W1.png"><img src="img/practice/Krenz_W1.png" alt="Krenz_W1"></div>
+          <div class="item target img4" data-src="img/practice/Krenz_W2.png"><img src="img/practice/Krenz_W2.png" alt="Krenz_W2"></div>
+          <div class="item target img5" data-src="img/practice/Krenz_W3.png"><img src="img/practice/Krenz_W3.png" alt="Krenz_W3"></div>
+          <div class="item target img6" data-src="img/practice/Krenz_W4.png"><img src="img/practice/Krenz_W4.png" alt="Krenz_W4"></div>
+          <div class="item target img7" data-src="img/practice/Krenz_W5.png"><img src="img/practice/Krenz_W5.png" alt="Krenz_W5"></div>
+          <div class="item target img8" data-src="img/practice/Krenz_W6.png"><img src="img/practice/Krenz_W6.png" alt="Krenz_W6"></div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="tuya" class="pic-page" data-menu-offset="-100">
+        <h1>塗鴉<br>Graffiti</h1>
+        <div id="pic-2" class="pic-gallery gallery-animate"> 
+          <div class="item target img1" data-src="img/graffiti/chiya.png"><img src="img/graffiti/chiya.png" alt="chiya"></div>
+          <div class="item target img2" data-src="img/graffiti/kurumi.png"><img src="img/graffiti/kurumi.png" alt="kurumi"></div>
+          <div class="item target img3" data-src="img/graffiti/kurumi_R18.png"><img src="img/graffiti/kurumi_R18.png" alt="kurumi_R18"></div>
+          <div class="item target img4" data-src="img/graffiti/Raven_Branwen.png"><img src="img/graffiti/Raven_Branwen.png" alt="Raven_ Branwen"></div>
+          <div class="item target img5" data-src="img/graffiti/Sorceress.png"><img src="img/graffiti/Sorceress.png" alt="Sorceress"></div>
+          <div class="item target img6" data-src="img/graffiti/zero_two.png"><img src="img/graffiti/zero_two.png" alt="zero_two"></div>
+          <div class="item target img7" data-src="img/graffiti/zero_two_R18.png"><img src="img/graffiti/zero_two_R18.png" alt="zero_two_R18"></div>
+          <div class="item target img8" data-src="img/graffiti/情人節快樂.png"><img src="img/graffiti/情人節快樂.png" alt="情人節快樂"></div>
+          <div class="item target img9" data-src="img/graffiti/薛南賀圖.jpg"><img src="img/graffiti/薛南賀圖.jpg" alt="薛南賀圖"></div>
+          <div class="item target img10" data-src="img/graffiti/lin.png"><img src="img/graffiti/lin.png" alt="lin"></div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="hai" class="pic-page" data-menu-offset="-100">
+        <h1>創作<br>Creation</h1>
+        <div id="pic-3" class="pic-gallery gallery-animate"> 
+          <div class="item target img1" data-src="img/creation/2016萬聖節.png"><img src="img/creation/2016萬聖節.png" alt="2016萬聖節"></div>
+          <div class="item target img2" data-src="img/creation/2017丁酉.png"><img src="img/creation/2017丁酉.png" alt="2017丁酉"></div>
+          <div class="item target img3" data-src="img/creation/2017萬聖節-狂三.png"><img src="img/creation/2017萬聖節-狂三.png" alt="2017萬聖節-狂三"></div>
+          <div class="item target img4" data-src="img/creation/2B.png"><img src="img/creation/2B.png" alt="2B"></div>
+          <div class="item target img5" data-src="img/creation/miku-10th.png"><img src="img/creation/miku-10th.png" alt="miku-10th"></div>
+          <div class="item target img6" data-src="img/creation/Ruby.png"><img src="img/creation/Ruby.png" alt="Ruby"></div>
+          <div class="item target img7" data-src="img/creation/酒吞童子.png"><img src="img/creation/酒吞童子.png" alt="酒吞童子"></div>
+          <div class="item target img8" data-src="img/creation/乘龍.png"><img src="img/creation/乘龍.png" alt="乘龍"></div>
+          <div class="item target img9" data-src="img/creation/狂三-聖誕.png"><img src="img/creation/狂三-聖誕.png" alt="狂三-聖誕"></div>
+          <div class="item target img10" data-src="img/creation/狂三.png"><img src="img/creation/狂三.png" alt="狂三"></div>
+          <div class="item target img11" data-src="img/creation/狂三毛衣(R15).png"><img src="img/creation/狂三毛衣(R15).png" alt="狂三毛衣(R15)"></div>
+          <div class="item target img12" data-src="img/creation/黑貞德.png"><img src="img/creation/黑貞德.png" alt="黑貞德"></div>
+          <div class="item target img13" data-src="img/creation/奧茲魔女.png"><img src="img/creation/奧茲魔女.png" alt="奧茲魔女"></div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="cooperate" class="cooperate" data-menu-offset="-100">
+        <h1 style="padding-top: 50px; width: 100%;">合作<br>cooperation</h1>
+        <div class="cooperate-content">
+          <div>
+            <img src="img/cooperation/ch1.png">
+            <div style="width: 100%; margin-top: 20px; text-align: center;">
+              <a style="text-decoration: none;" target="_blank" href="https://home.gamer.com.tw/creationDetail.php?sn=3364693">《橫越世界的門》</a>網路小說 人物、封面設計
+            </div>
+          </div>
+          <div>
+            <img src="img/cooperation/ch2.png">
+            <div style="width: 100%; margin-top: 20px; text-align: center;">
+              <a style="text-decoration: none;" target="_blank" href="https://home.gamer.com.tw/creationDetail.php?sn=3364693">《橫越世界的門》</a>網路小說 人物、封面設計
+            </div>
+          </div>
+          <div>
+            <img src="img/cooperation/local_warfare_design.png">
+            <div style="width: 100%; margin-top: 20px; text-align: center;">
+              <a style="text-decoration: none;" target="_blank" href="https://play.google.com/store/apps/details?id=com.BUProduct.LocalWarfarePortable&hl=en_US">Local Warfare</a>手機遊戲 人物設計
+            </div>
+          </div>
+          <div>
+            <img src="img/cooperation/世大運-230.png">
+            <div style="width: 100%; margin-top: 20px; text-align: center;">
+              <a style="text-decoration: none;" target="_blank" href="https://docs.google.com/document/d/1YykJbl5cVnVt4Y9xatHcS5aswTdKDDXSlF9q7mcaQFQ/edit">台北世大運</a>	應援圖
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="v-gallery" class="v-gallery" data-menu-offset="-100">
+        <h1 style="padding-top: 50px;">虛擬畫廊<br>virtual gallary</h1>
+        <div id = "gallary">
+          <div id = "gallary-hint" onclick = "$(this).fadeOut({done : function(){ $('canvas').fadeIn({done : main()})}})">
+            <h1 style = "width: 100%; display: flex; justify-content: center; align-items: flex-end;">Click to enter virtual gallary.</h1>
+            <p style = "width: 100%; display: flex; justify-content: center; align-items: center;">
+              操作說明<br>
+              WASD移動位置 <br>
+              滑鼠拖曳移動視角
+            </p>
+          </div>
+          <div id = "gallary-hint-small">
+            <h3 style = "margin-top: 50px;">Screen width need larger than 900px to enable virtual gallary.</h3>
+          </div>
+          <canvas style="display:none; margin-bottom: 100px;" id="canvas" onmousemove = "mouseMoveCallBack(event)" onmousedown="mouseDown()" onmouseup="mouseUp()" onmouseout="mouseUp()"></canvas>
+        </div>
+        
+      </div>
+      <div class="hr"></div>
+      <div id="price" class="price" data-menu-offset="-100">
+        <h1 style="padding-top: 50px; width: 100%;">委託<br>delegation</h1>
+        <div class="price-content">
+          <div class="price-content-div price-content-animate-left">
+            <img src="img/good/grayscale.png">
+          </div>
+          <div class="price-content-div price-content-animate-right">
+            <img src="img/good/full_color.png">
+          </div>
+          <div class="price-content-div price-content-animate-left">
+            <img src="img/good/illustration.png">
+          </div>
+          <div class="price-content-div price-content-animate-right">
+            <img src="img/good/other.png">
+          </div>
+        </div>
+        <div class="price-hint" style="text-align: center;">
+            <h3>委託注意事項</h3>
+            請來信至<span style="user-select: all;">egino135egino135@gmail.com</span><br>
+            需求與實際價格與討論結果為準<br>
+            原檔(.clip .psd)可以額外購買<br>
+            委託圖片可以由委託者自由發布、使用，本人只會發布於私人空間(pixiv)<br><br>
+            有疑問也歡迎來信詢問           
+        </div>
+      </div>
+      <div class="hr"></div>
+      <div id="contact" class="footer" data-menu-offset="-80">
+        <div class="footer-content" style="text-align: center;">
+          <div class="footer-logo">
+            <img src="img/facebook_1.svg">
+          </div>
+          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmaochinnn%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        </div>
 
-			}
-			function record(e)
-			{
-				if(end == true)return;
-				var td = e.target;
-				if(td.innerHTML == "")
-				{
-					raceRecord.push(td);
-					if(count %2 == 0)	//for X
-					{
-						td.innerHTML = "X";
-					}
-					else
-					{
-						td.innerHTML = "O";
-					}
-					window.setTimeout(decideWin, 1000);
-					count++;
-				}
-			}
-			function decideWin()
-			{
-				if(end == true) return;
-				var table = document.getElementById("blocks");
-				var trList = table.children;
-				temp = trList;
-				
-				if(	trList[0].children[0].innerHTML == trList[0].children[1].innerHTML 
-					&& trList[0].children[1].innerHTML == trList[0].children[2].innerHTML
-					&& trList[0].children[0].innerHTML != "")
-				{
-					if(trList[0].children[0].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[0].children[0].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[1].children[0].innerHTML == trList[1].children[1].innerHTML 
-						&& trList[1].children[1].innerHTML == trList[1].children[2].innerHTML
-						&& trList[1].children[0].innerHTML != "")
-				{
-					if(trList[1].children[0].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[1].children[0].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[2].children[0].innerHTML == trList[2].children[1].innerHTML 
-						&& trList[2].children[1].innerHTML == trList[2].children[2].innerHTML
-						&& trList[2].children[0].innerHTML != "")
-				{
-					if(trList[2].children[0].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[2].children[0].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[0].children[0].innerHTML == trList[1].children[0].innerHTML 
-						&& trList[1].children[0].innerHTML == trList[2].children[0].innerHTML
-						&& trList[0].children[0].innerHTML != "")
-				{
-					if(trList[0].children[0].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[0].children[0].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[0].children[1].innerHTML == trList[1].children[1].innerHTML 
-						&& trList[1].children[1].innerHTML == trList[2].children[1].innerHTML
-						&& trList[0].children[1].innerHTML != "")
-				{
-					if(trList[0].children[1].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[0].children[1].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[0].children[2].innerHTML == trList[1].children[2].innerHTML 
-						&& trList[1].children[2].innerHTML == trList[2].children[2].innerHTML
-						&& trList[0].children[2].innerHTML != "")
-				{
-					if(trList[0].children[2].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[0].children[2].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[0].children[0].innerHTML == trList[1].children[1].innerHTML 
-						&& trList[1].children[1].innerHTML == trList[2].children[2].innerHTML
-						&& trList[0].children[0].innerHTML != "")
-				{
-					if(trList[0].children[0].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[0].children[0].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(trList[0].children[2].innerHTML == trList[1].children[1].innerHTML 
-						&& trList[1].children[1].innerHTML == trList[2].children[0].innerHTML
-						&& trList[0].children[2].innerHTML != "")
-				{
-					if(trList[0].children[2].innerHTML == "O")
-					{
-						window.alert("O wins!");
-						end = true;
-					}
-					else if(trList[0].children[2].innerHTML == "X")
-					{
-						window.alert("X wins!");
-						end = true;
-					}
-				}
-				else if(count >= 9)
-				{
-					window.alert("Tie!");
-					end = true;
-				}
-				
-			}
-			window.addEventListener( "load", start, false );
-        </script>
-    </head>
-    <body>
-        <table id="table">
-			<caption>Tic-Tac-Toe</caption>
-			<tbody id = "blocks">
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3">
-						<input id="replay" type="button" value="Replay"onclick="replay()">
-						<input id="new" type="button" value="New Game" onclick="location.reload()">
-					</td>
-				</tr>
-			</tfoot>
-        </table>
-		
-    </body>
+        <div class="footer-content" style="text-align: center;">
+          <div class="footer-logo">
+            <img src="img/mail.svg">
+          </div>
+          <a style="text-decoration: none;">
+            <span id="maillink">
+              Email: <span style="user-select: all;">egino135egino135@gmail.com</span><br>
+              or<br>
+              send message to facebook<br>
+            </span>
+          </a>
+        </div>
+        <div class="footer-content" style="text-align: center;">
+          <div class="footer-logo">
+            <img src="img/tags.svg">
+          </div>
+          <div id="social-link">
+            <div>
+              <a target="_blank" href="https://home.gamer.com.tw/homeindex.php?owner=maochinn"><img src="img/bahamut.png"></a>
+            </div>
+            <div>
+              <a target="_blank" href="https://www.pixiv.net/member.php?id=6856401"><img src="img/pixiv-logo.png"></a>
+            </div>
+            <div>
+              <a target="_blank" href="https://www.plurk.com/maochinn"><img src="img/plurk.jpg"></a>
+            </div>
+            <div>
+              <a target="_blank" href="https://medibang.com/author/3549359"><img src="img/medibang.jpg"></a>
+            </div>
+            <div>
+              <a target="_blank" href="https://www.youtube.com/channel/UCww--WSRxvzaY41oa0kz8Mw"><img src="img/youtube.png"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
 </html>

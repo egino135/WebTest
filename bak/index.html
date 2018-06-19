@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<title>Tic-tac-toe</title> 
+        <style type = "text/CSS">
+           table, th, td{
+				border: 1px solid black;
+				border-collapse: collapse;
+				font-family: Calibri;
+				font-size: 48px;
+            }
+			caption {
+				color: navy;
+			}
+			tbody tr {
+				height: 100px;
+			}
+			td {
+				width: 100px;
+				text-align: center;
+			}
+        </style>
+        <script>
+		var raceRecord = [];
+		var count = 0;	//even is X, odd is O
+		var temp;
+		var temp2;
+		var interval = null;
+		var end = false;
+			function start()
+			{
+				var table = document.getElementById("blocks");
+				table.addEventListener( "click", record, false ); 
+				
+			}
+			function replay()
+			{
+				count = 0;
+				end = false;
+				//clear
+				for(var td of raceRecord)
+				{
+					td.innerHTML = "";
+				}
+				interval = window.setInterval( replayRecord, 1000 )
+			}
+			function replayRecord()
+			{
+				if(end == true)return;
+				var td = raceRecord[count];
+				{
+					if(count %2 == 0)	//for X
+					{
+						td.innerHTML = "X";
+					}
+					else
+					{
+						td.innerHTML = "O";
+					}
+					count++;
+					window.setTimeout(decideWin, 3000);
+					if(end == true)
+					{
+						clearInterval(interval);
+					}
+				}
+
+			}
+			function record(e)
+			{
+				if(end == true)return;
+				var td = e.target;
+				if(td.innerHTML == "")
+				{
+					raceRecord.push(td);
+					if(count %2 == 0)	//for X
+					{
+						td.innerHTML = "X";
+					}
+					else
+					{
+						td.innerHTML = "O";
+					}
+					window.setTimeout(decideWin, 1000);
+					count++;
+				}
+			}
+			function decideWin()
+			{
+				if(end == true) return;
+				var table = document.getElementById("blocks");
+				var trList = table.children;
+				temp = trList;
+				
+				if(	trList[0].children[0].innerHTML == trList[0].children[1].innerHTML 
+					&& trList[0].children[1].innerHTML == trList[0].children[2].innerHTML
+					&& trList[0].children[0].innerHTML != "")
+				{
+					if(trList[0].children[0].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[0].children[0].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[1].children[0].innerHTML == trList[1].children[1].innerHTML 
+						&& trList[1].children[1].innerHTML == trList[1].children[2].innerHTML
+						&& trList[1].children[0].innerHTML != "")
+				{
+					if(trList[1].children[0].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[1].children[0].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[2].children[0].innerHTML == trList[2].children[1].innerHTML 
+						&& trList[2].children[1].innerHTML == trList[2].children[2].innerHTML
+						&& trList[2].children[0].innerHTML != "")
+				{
+					if(trList[2].children[0].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[2].children[0].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[0].children[0].innerHTML == trList[1].children[0].innerHTML 
+						&& trList[1].children[0].innerHTML == trList[2].children[0].innerHTML
+						&& trList[0].children[0].innerHTML != "")
+				{
+					if(trList[0].children[0].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[0].children[0].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[0].children[1].innerHTML == trList[1].children[1].innerHTML 
+						&& trList[1].children[1].innerHTML == trList[2].children[1].innerHTML
+						&& trList[0].children[1].innerHTML != "")
+				{
+					if(trList[0].children[1].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[0].children[1].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[0].children[2].innerHTML == trList[1].children[2].innerHTML 
+						&& trList[1].children[2].innerHTML == trList[2].children[2].innerHTML
+						&& trList[0].children[2].innerHTML != "")
+				{
+					if(trList[0].children[2].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[0].children[2].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[0].children[0].innerHTML == trList[1].children[1].innerHTML 
+						&& trList[1].children[1].innerHTML == trList[2].children[2].innerHTML
+						&& trList[0].children[0].innerHTML != "")
+				{
+					if(trList[0].children[0].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[0].children[0].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(trList[0].children[2].innerHTML == trList[1].children[1].innerHTML 
+						&& trList[1].children[1].innerHTML == trList[2].children[0].innerHTML
+						&& trList[0].children[2].innerHTML != "")
+				{
+					if(trList[0].children[2].innerHTML == "O")
+					{
+						window.alert("O wins!");
+						end = true;
+					}
+					else if(trList[0].children[2].innerHTML == "X")
+					{
+						window.alert("X wins!");
+						end = true;
+					}
+				}
+				else if(count >= 9)
+				{
+					window.alert("Tie!");
+					end = true;
+				}
+				
+			}
+			window.addEventListener( "load", start, false );
+        </script>
+    </head>
+    <body>
+        <table id="table">
+			<caption>Tic-Tac-Toe</caption>
+			<tbody id = "blocks">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">
+						<input id="replay" type="button" value="Replay"onclick="replay()">
+						<input id="new" type="button" value="New Game" onclick="location.reload()">
+					</td>
+				</tr>
+			</tfoot>
+        </table>
+		
+    </body>
+</html>

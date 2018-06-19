@@ -607,6 +607,10 @@ function keyReaction(camera)
 		imgInfo[3].path = "img/graffiti/zero_two_R18.png"
 		imgInfo[3].texture = loadImg2Texture(gl, imgInfo[3].path);
 	}
+	if(keys[13])	//type enter
+	{
+		cubeTexture = loadImg2Texture(gl, "img/teacher.png");
+	}
 }
 
 function getMousePos(canvas, evt) 

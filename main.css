@@ -1,0 +1,586 @@
+* {
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 微軟正黑體
+}
+
+*::-webkit-scrollbar {
+	display:none;
+}
+/*
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin:80px 0 5px 0;
+}
+*::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: rgb(219,219,219);
+}*/
+body {
+  background-image: url(../img/main.png);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+.hr {
+  width: 100%;
+  /*border-bottom: 5vw solid lightgrey;
+  border-top: 1vw solid lightgrey;
+  */
+  height: 10vh;
+  background-color: rgba(211, 211, 211, 0.9);
+  margin: 0;
+}
+#navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 100;
+}
+#navbar .nav-active {
+  color: lightskyblue;
+}
+nav > div > div {
+  width: 100%;
+  justify-content: space-around;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.8);
+}
+.navbar-light .navbar-nav .nav-link:first-child {
+  font-weight: bolder;
+}
+.home {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.intro {
+  width: 100%;
+  padding-top: 50px;
+  height: 80vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+.intro > h1, .intro > h2 {
+  width: 100%;
+  text-align: center;
+}
+.intro p {
+  margin-top: 100px;
+}
+.pic-gallery {
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+}
+.pic-gallery .item {
+  margin: 3px;
+  border: 1px solid lightgray;
+  height:282px;
+  overflow: hidden;
+}
+
+.pic-gallery .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  visibility: hidden;
+}
+#pic-1 .item {
+  margin: 3px;
+  border: 1px solid lightgray;
+  height:282px;
+  overflow: hidden;
+}
+.target {
+  cursor: pointer;
+}
+h1 {
+  text-align: center;
+  font-size: 3.5vw;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pic-page-wrapper {
+  height: 100vh;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pic-page {
+  /*background-color: white;*/
+  background-color: rgba(255, 255, 255, 1);
+  width: 90vw;
+}
+.v-gallery {
+  width: 90vw;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+#gallery {
+  text-align: center;
+}
+.pic-page > h1 {
+  margin-top: 50px;
+}
+.footer {
+  background-color: rgba(43,37,44,0.75);
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.footer-content {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  width: 33%;
+}
+.footer .footer-logo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  width: 100%;
+}
+.footer-logo img {
+  width: 60px;
+  height: 60px;
+}
+.price {
+  width: 90vw;
+  background-color: rgba(255, 255, 255, 1);
+}
+.price-content {
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.price-content-div {
+  margin: 0;
+  padding: 10px;
+  width: 50%;
+}
+.price-content-animate-left {
+  transform: translate3d(-75%, 0, 0);
+  opacity: 0;
+  transition: transform 700ms ease-out, opacity 700ms ease-out;
+  text-align: right;
+}
+.price-content-animate-right {
+  transform: translate3d(75%, 0, 0);
+  opacity: 0;
+  transition: transform 700ms ease-out, opacity 700ms ease-out;
+}
+.price-content-animate-active {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+.price-content-div img {
+  width: 80%;
+}
+.price-hint {
+  margin-bottom: 50px;
+}
+#gallary {
+  text-align: center;
+  margin-top: 50px;
+}
+.cooperate {
+  width: 90vw;
+  background-color: rgba(255, 255, 255, 1);
+}
+.cooperate .cooperate-content {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+.cooperate .cooperate-content div {
+  width: 25%;
+  padding: 10px;
+}
+.cooperate .cooperate-content div img {
+  width: 100%;
+}
+#gallary-hint {
+  height: 80vh;
+  background-color: rgba(180, 210, 230, 0.8);
+  max-height: 600px;
+  cursor: pointer;
+  padding: 10px; 
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+#gallary-hint-small {
+  height: 80vh;
+  background-color: rgba(180, 210, 230, 0.8);
+  max-height: 600px;
+  margin-bottom: 50px;
+  display: none;
+}
+#maillink {
+  font-size: 2vw;
+  color: white;
+}
+#social-link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#social-link img {
+  width: 100%;
+}
+#social-link div {
+  width: 25%;
+  padding: 10px;
+  margin: 20px;
+}
+@media only screen and (max-width: 900px) {
+  h1 {
+    font-size: 10vw;
+    line-height: 1.2;
+  }
+  #navbar {
+    /*visibility: hidden;*/
+  }
+  .pic-page, .v-gallery, .price, .cooperate {
+    width: 100vw;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .hr {
+    height: 5vh;
+  }
+  .price-content-div {
+    width: 100%;
+  }
+  .price-content-animate-left, .price-content-animate-right {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  .price-content-div img {
+    width: 100%;
+  }
+  /*#gallary {
+    display: none;
+  }*/
+  .cooperate .cooperate-content div {
+    width: 100%;
+  }
+  #gallary-hint {
+    display: none;
+  }
+  #gallary-hint-small {
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+  }
+  canvas {
+    display: none;
+  }
+  .footer-content {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    width: 100%;
+  }
+  #maillink {
+    font-size: 5vw;
+  }
+  #social-link div {
+    width: 50%;
+    padding: 10px;
+  }
+}
+
+/*
+*
+*/
+#pic-1 .item.img1 {
+  background: url(../img/practice/body_study1.png) no-repeat center center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img2 {
+  background: url(../img/practice/body_study2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img3 {
+  background: url(../img/practice/Krenz_W1.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img4 {
+  background: url(../img/practice/Krenz_W2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img5 {
+  background: url(../img/practice/Krenz_W3.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img6 {
+  background: url(../img/practice/Krenz_W4.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img7 {
+  background: url(../img/practice/Krenz_W5.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img8 {
+  background: url(../img/practice/Krenz_W6.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img9 {
+  background: url(../img/practice/gray_scale.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img10 {
+  background: url(../img/practice/myself_study_1.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img11 {
+  background: url(../img/practice/myself_study_2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+/*
+*
+*/
+#pic-2 .item.img1 {
+  background: url(../img/graffiti/chiya.png) no-repeat center center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img2 {
+  background: url(../img/graffiti/kurumi.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img4 {
+  background: url(../img/graffiti/Raven_Branwen.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img5 {
+  background: url(../img/graffiti/Sorceress.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img6 {
+  background: url(../img/graffiti/zero_two.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img7 {
+  background: url(../img/graffiti/MAO.jpg) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img8 {
+  background: url(../img/graffiti/情人節快樂.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img9 {
+  background: url(../img/graffiti/薛南賀圖.jpg) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img10 {
+  background: url(../img/graffiti/lin.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img11 {
+  background: url(../img/graffiti/kawaii_student.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img12 {
+  background: url(../img/graffiti/kawaii_student_2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img13 {
+  background: url(../img/graffiti/kawaii_student_3.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+/*
+*
+*/
+
+/*
+*
+*/
+#pic-3 .item.img1 {
+  background: url(../img/creation/2016萬聖節.png) no-repeat center center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img2 {
+  background: url(../img/creation/2017丁酉.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img3 {
+  background: url(../img/creation//2017萬聖節-狂三.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img4 {
+  background: url(../img/creation/2B.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img5 {
+  background: url(../img/creation/miku-10th.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img6 {
+  background: url(../img/creation/Ruby.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img7 {
+  background: url(../img/creation/酒吞童子.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img8 {
+  background: url(../img/creation/乘龍.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img9 {
+  background: url(../img/creation/狂三-聖誕.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img10 {
+  background: url(../img/creation/狂三.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img11 {
+  background: url("../img/creation/狂三毛衣(R15).png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img12 {
+  background: url(../img/creation/黑貞德.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img13 {
+  background: url(../img/creation/奧茲魔女.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img14 {
+  background: url(../img/creation/isabelle.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}

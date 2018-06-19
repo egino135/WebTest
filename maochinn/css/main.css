@@ -437,16 +437,17 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
-/*
-*
-*/
-#pic-1 .item.img8 {
-  background: url(../img/practice/Krenz_W6.png) no-repeat center center;
+#pic-2 .item.img10 {
+  background: url(../img/graffiti/lin.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
+/*
+*
+*/
+
 /*
 *
 */
@@ -493,7 +494,7 @@ h1 {
   background-size: contain;
 }
 #pic-3 .item.img7 {
-  background: url(../img/creation/世大運-230.png) no-repeat center center;
+  background: url(../img/creation/酒吞童子.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -522,6 +523,20 @@ h1 {
 }
 #pic-3 .item.img11 {
   background: url("../img/creation/狂三毛衣(R15).png") no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img12 {
+  background: url(../img/creation/黑貞德.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img13 {
+  background: url(../img/creation/奧茲魔女.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;

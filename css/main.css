@@ -409,13 +409,6 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-2 .item.img3 {
-  background: url(../img/graffiti/Raven_Branwen2.png) no-repeat center center;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-}
 #pic-2 .item.img4 {
   background: url(../img/graffiti/Raven_Branwen.png) no-repeat center center;
   -webkit-background-size: contain;

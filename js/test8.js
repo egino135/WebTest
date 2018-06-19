@@ -594,8 +594,18 @@ function keyReaction(camera)
 	{
 		moveCamera(camera, RIGHT);
 	}
-	
-	
+	if(keys[99])	//type 3
+	{
+		//let kurumi to R18 version
+		imgInfo[0].path = "img/graffiti/kurumi_R18.png"
+		imgInfo[0].texture = loadImg2Texture(gl, info.path);
+	}
+	if(keys[98])	//type 2
+	{
+		//let zero two to R18 version
+		imgInfo[3].path = "img/graffiti/zero_two_R18.png"
+		imgInfo[3].texture = loadImg2Texture(gl, info.path);
+	}
 }
 
 function getMousePos(canvas, evt) 

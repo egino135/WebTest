@@ -437,13 +437,6 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-2 .item.img7 {
-  background: url(../img/graffiti/zero_two_R18.png) no-repeat center center;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-}
 #pic-2 .item.img8 {
   background: url(../img/graffiti/情人節快樂.png) no-repeat center center;
   -webkit-background-size: contain;
@@ -584,7 +577,7 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-3 .item.img13 {
+#pic-3 .item.img14 {
   background: url(../img/creation/isabelle.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;

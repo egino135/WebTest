@@ -437,6 +437,13 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
+#pic-2 .item.img7 {
+  background: url(../img/graffiti/MAO.jpg) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
 #pic-2 .item.img8 {
   background: url(../img/graffiti/情人節快樂.png) no-repeat center center;
   -webkit-background-size: contain;

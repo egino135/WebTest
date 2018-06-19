@@ -371,6 +371,27 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
+#pic-1 .item.img9 {
+  background: url(../img/practice/gray_scale.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img10 {
+  background: url(../img/practice/myself_study_1.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img11 {
+  background: url(../img/practice/myself_study_2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
 /*
 *
 */
@@ -389,7 +410,7 @@ h1 {
   background-size: contain;
 }
 #pic-2 .item.img3 {
-  background: url(../img/graffiti/kurumi_R18.png) no-repeat center center;
+  background: url(../img/graffiti/Raven_Branwen2.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -439,6 +460,27 @@ h1 {
 }
 #pic-2 .item.img10 {
   background: url(../img/graffiti/lin.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img11 {
+  background: url(../img/graffiti/kawaii_student.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img12 {
+  background: url(../img/graffiti/kawaii_student_2.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-2 .item.img13 {
+  background: url(../img/graffiti/kawaii_student_3.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -537,6 +579,13 @@ h1 {
 }
 #pic-3 .item.img13 {
   background: url(../img/creation/奧茲魔女.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img13 {
+  background: url(../img/creation/isabelle.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;

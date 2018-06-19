@@ -142,6 +142,7 @@ function createShader(gl, source, type)
 var floorTexture = null;
 var wallTexture = null;
 var columnTexture = null;
+var cubeTexture = null;
 
 
 function createProgram(gl, vertexShaderSource, fragmentShaderSource) 
@@ -188,7 +189,7 @@ function loadImageAndCreateTextureInfo(gl, url)
 	gl.bindTexture(gl.TEXTURE_2D, tex);
 	// Fill the texture with a 1x1 blue pixel.
 	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
-				  new Uint8Array([0, 0, 255, 255]));
+				  new Uint8Array([0, 0, 100, 255]));
 
 	// let's assume all images are not a power of 2
 	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -467,6 +468,8 @@ function main()
 	floorTexture = loadImg2Texture(gl, "img/scene/floor.jpg");
 	wallTexture = loadImg2Texture(gl, "img/scene/wall.jpg")
 	columnTexture = loadImg2Texture(gl, "img/scene/column.jpg")
+	cubeTexture = loadImg2Texture(gl, "img/graffiti/kurumi_R18.png")
+	
 		//var texInfo = loadImageAndCreateTextureInfo(gl, "https://c1.staticflickr.com/9/8873/18598400202_3af67ef38f_q.jpg");
 	
 	
@@ -528,7 +531,7 @@ function drawScene(gl, programInfo, cubeVaoInfo, squareVaoInfo, now)
 	
 	gl.uniformMatrix4fv(programInfo.uniformLocations.model, false, model.elements);
 
-	gl.bindTexture(gl.TEXTURE_2D, imgInfo[0].texture);
+	gl.bindTexture(gl.TEXTURE_2D, cubeTexture);
 	
 	gl.bindVertexArray(cubeVaoInfo.vaoNumber);
 	gl.uniform1i(programInfo.uniformLocations.u_texture, 0);

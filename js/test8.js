@@ -1,4 +1,5 @@
 "use strict";
+var gl = null;
 var debug = 0.0;
 var floatSize = 4;
 var keys = [];
@@ -432,7 +433,7 @@ function main()
 	// Get A WebGL context
 	/** @type {HTMLCanvasElement} */
 	var	canvas = document.getElementById("canvas");
-	var gl = canvas.getContext("webgl2");
+	gl = canvas.getContext("webgl2");
 	if (!gl) 
 	{
 		alert('Unable to initialize WebGL. Your browser or machine may not support it.');

@@ -599,13 +599,13 @@ function keyReaction(camera)
 	{
 		//let kurumi to R18 version
 		imgInfo[0].path = "img/graffiti/kurumi_R18.png"
-		imgInfo[0].texture = loadImg2Texture(gl, info.path);
+		imgInfo[0].texture = loadImg2Texture(gl, imgInfo[0].path);
 	}
 	if(keys[98])	//type 2
 	{
 		//let zero two to R18 version
 		imgInfo[3].path = "img/graffiti/zero_two_R18.png"
-		imgInfo[3].texture = loadImg2Texture(gl, info.path);
+		imgInfo[3].texture = loadImg2Texture(gl, imgInfo[3].path);
 	}
 }
 

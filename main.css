@@ -316,76 +316,90 @@ h1 {
 *
 */
 #pic-1 .item.img1 {
-  background: url(../img/practice/body_study1.png) no-repeat center center; 
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-}
-#pic-1 .item.img2 {
-  background: url(../img/practice/body_study2.png) no-repeat center center;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-}
-#pic-1 .item.img3 {
   background: url(../img/practice/Krenz_W1.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-1 .item.img4 {
+#pic-1 .item.img2 {
   background: url(../img/practice/Krenz_W2.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-1 .item.img5 {
+#pic-1 .item.img3 {
   background: url(../img/practice/Krenz_W3.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-1 .item.img6 {
+#pic-1 .item.img4 {
   background: url(../img/practice/Krenz_W4.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-1 .item.img7 {
+#pic-1 .item.img5 {
+  background: url(../img/practice/Krenz_W4_DLC.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img6 {
   background: url(../img/practice/Krenz_W5.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
-#pic-1 .item.img8 {
+#pic-1 .item.img7 {
   background: url(../img/practice/Krenz_W6.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
+#pic-1 .item.img8 {
+  background: url(../img/practice/Krenz_W7.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
 #pic-1 .item.img9 {
-  background: url(../img/practice/gray_scale.png) no-repeat center center;
+  background: url(../img/practice/Krenz_W7_DLC.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
 #pic-1 .item.img10 {
-  background: url(../img/practice/myself_study_1.png) no-repeat center center;
+  background: url(../img/practice/Krenz_W8.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
 #pic-1 .item.img11 {
+  background: url(../img/practice/gray_scale.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img12 {
+  background: url(../img/practice/myself_study_1.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-1 .item.img13 {
   background: url(../img/practice/myself_study_2.png) no-repeat center center;
   -webkit-background-size: contain;
   -moz-background-size: contain;

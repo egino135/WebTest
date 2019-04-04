@@ -598,3 +598,24 @@ h1 {
   -o-background-size: contain;
   background-size: contain;
 }
+#pic-3 .item.img15 {
+  background: url(../img/creation/美心.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img16 {
+  background: url(../img/creation/狂三_二三靈裝_眼鏡.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+#pic-3 .item.img17 {
+  background: url(../img/creation/2019_狂三_靈裝.png) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
